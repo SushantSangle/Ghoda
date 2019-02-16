@@ -4,6 +4,7 @@ void alternate()
   {
     for(int j=0;j<2;i++) pt[i][j] = pta[i][j];
   }
+  mode = 0;
 }
 
 void staticG()
@@ -12,5 +13,6 @@ void staticG()
   {
     for(int j=0;j<2;i++) pt[i][j] = pt1[i][j];
   }  
+  mode = 1;
 }
 

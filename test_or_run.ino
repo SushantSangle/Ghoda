@@ -18,9 +18,8 @@ void test(){
 }
 
 void RUN(int p){
-    if(p<2){ i++; i=i%360; }
-    p=p%2;
-    switch(p)
+    if(!p){ i++; i=i%360; }
+    switch(mode)
     {
       case 0:
         phaseAngle(0,i+0,0);

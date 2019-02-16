@@ -1,8 +1,18 @@
 #include "stdInc.h"
 
 Servo up[4],down[4];//SERVO
+
 //time interval
 int S = 2;
+
+//----------FOR_MPU--------------
+
+int yaw2=0,pitch2=0,roll2=0;
+float yaw,pitch,roll;
+float yp=0,pp=0,rp=0;
+byte ypr1[6];
+
+//-------------------------------
 
 /*-------------------PINS-------------------------*/
 const uint16_t upS[4]   = {38,30,26,40}; //{34,36,30,32}
@@ -13,8 +23,8 @@ const int offset[8]={0,-3,10,-3,-15,-5,-7,-10};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
-float Hm[4]={0.6f,0.6f,0.6f,0.6f};
-float Lm[4]={1.0f,1.0f,1.0f,1.0f};
+float Hm[4];
+float Lm[4];
 const int upB[4]={1,-1,-1,1};
 const int downB[4]={1,-1,-1,1};
 int m;
@@ -22,8 +32,11 @@ int m;
 
 /*------------POSITION_MANIPULATION---------------*/
 const int elb[2]={0,450};      //elbow co-ordinates
-int els[4][2]={{5,0},{5,0},{-10,10},{-10,10}}; 
+int els[4][2]; 
 bool mode=0;
+int LEG;
+double xpriv[4]= {0,0,0,0};
+double xnow[4] = {0,0,0,0};
 /*------------------------------------------------*/
 
 /*---------------ANGLE_MANIPULATION---------------*/
@@ -36,17 +49,17 @@ void setup()
 {
   pinmode();
   initial();
-  alternate();
-//  staticG();
+//  alternate();
+  staticG();
   getangle(4);
   initial();
   delay(3000);
-  Serial.begin(38400);
 }
 
 void loop()
 {
   RUN(0);
+  shift();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

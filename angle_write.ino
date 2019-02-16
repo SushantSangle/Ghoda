@@ -52,6 +52,15 @@ void getangle(int leg){
 /*-----------------------PHASE--------------------*/
 void phaseAngle(int leg,int p,int dir=0){
   p=p%360;
+  if(p==134){
+    switch(leg)
+    {
+      case 0: LEG = 0; break;
+      case 1: LEG = 1; break;
+      case 2: LEG = 2; break;
+      case 3: LEG = 3; break;
+    }
+  }
   p=p/5;
   constrain(p,0,71);
   usWrite(leg,Angle[leg][p][0]);
@@ -67,7 +76,6 @@ void usWrite(int i,int ang) //for giving angle to upper servo
   else
     up[i].write(angle(ang-rot,upB[i],i));
 }
-
 void dsWrite(int i,int ang)//for giving angle to lower servo
 {
   down[i].write(angle(ang,downB[i],i+4));

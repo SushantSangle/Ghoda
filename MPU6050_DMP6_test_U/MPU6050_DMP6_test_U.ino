@@ -163,9 +163,9 @@ void loop() {
 //              Serial.write(ypr1,6);
               tn = millis();
               if(tn-tp>50){
-                Serial.write('H');
-                Serial.write(ypr1,6);
-                tp = tn;
+              Serial.write('H');
+              Serial.write(ypr1,6);
+              tp = tn;
               }
               
 //              Serial.print("ypr\t");
@@ -175,7 +175,6 @@ void loop() {
 //              Serial.print("\t");
 //              Serial.println(roll2);
             }
-            while(Serial.available())  Serial.read();
         #endif
 
         // blink LED to indicate activity

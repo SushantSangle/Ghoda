@@ -58,9 +58,9 @@ void setup()
   staticG();
   getangle(4);
   initial();
-  Timer1.initialize(100000);
-  Timer1.attachInterrupt(checkMPU);
   delay(3000);
+  Timer1.initialize(50000);
+  Timer1.attachInterrupt(checkMPU);
 }
 
 void loop()

@@ -11,7 +11,7 @@ void checkMPU(){
   if(abs(yaw2)   > 50) yaw2   = yp;
   if(abs(pitch2) > 10) pitch2 = pp;
   if(roll2  > 25 || roll2 < -25) roll2  = roll;
-//  if(abs(roll2-yaw2)<=3 || abs(roll-yaw2)<=3) roll2=roll;
+  if(abs(roll2-yaw2)<=3 || abs(roll-yaw2)<=3) roll2=roll;
 
   float d1=1.0f,d2=0.0f;
   yaw   = d1*yaw2   + d2*yp;

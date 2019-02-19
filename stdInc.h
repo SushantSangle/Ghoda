@@ -1,8 +1,6 @@
 #include <Servo.h>
 #include <TimerOne.h>
 #include <math.h>
-#include "pta.h"
-#include "ptl.h"
 
 //definations
 #define l1 250

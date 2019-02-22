@@ -20,15 +20,13 @@ void RUN(int p){
 }
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
-void shift(){
-    if(roll  >  9   && els[0][1]< 0 && els[3][1]==0 ) stand();
-    if(roll  < -6   && els[0][1]==0 && els[3][1]==0 ) bow();
-    if(roll  < -6   && els[3][1]< 0 && els[1][1]==0 ) stand();
+void shift(){  
+//    if(roll  < -6   && els[3][1]< 0 && els[1][1]==0 ) stand();
 //-ve -> / and +ve -> \0
 //  if(roll  >  7   && els[3][1]==0 && els[0][1]==0 ) Raise();
-  if((i-45)%90==0)
+  if((i-46)%90==0)
   {
-    int Sh = 20;
+    int Sh = 40;
     switch(LEG){
       case 0: xnow[0]= Sh*-1;
               xnow[1]= Sh*-1;
@@ -55,19 +53,23 @@ void shift(){
     
     if(xpriv[0]!=xnow[0])
     {
-      for(int y=0 ; y<4 ; y++)
-        els[y][0] = xnow[y];
-      getangle(4);
-      RUN(1);
+      for(int t=0 ; t<3 ; t++)
+      {
+        for(int y=0 ; y<4 ; y++)
+          els[y][0] = map(t,0,2,xpriv[y],xnow[y]);
+        getangle(4);
+        RUN(1);
+      }
       delay(20);
     }
     xpriv[0] = xnow[0];
     xpriv[1] = xnow[1];
     xpriv[2] = xnow[2];
-    xpriv[3] = xnow[3];
+    xpriv[3] = xnow[3];    
+    delay(150);
   }
-  
-
+  if(roll  >  6   && els[0][1]< 0 && els[3][1]==0 ) stand();
+  if(roll  < -6   && els[0][1]==0 && els[3][1]==0 ) bow();
 }
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/

@@ -1,5 +1,3 @@
-
-
 #include "I2Cdev.h"
 
 #include "MPU6050_6Axis_MotionApps20.h"
@@ -151,29 +149,23 @@ void loop() {
               roll  = ypr[2] * 180/M_PI;
               ypr1[0] = (yaw   & 255);
               ypr1[1] = (yaw   & (255<<8))>>8;
-              ypr1[2] = (pitch & 255);
-              ypr1[3] = (pitch & (255<<8))>>8;
-              ypr1[4] = (roll  & 255);
-              ypr1[5] = (roll  & (255<<8))>>8;
+              ypr1[4] = (pitch & 255);
+              ypr1[5] = (pitch & (255<<8))>>8;
+              ypr1[2] = (roll  & 255);
+              ypr1[3] = (roll  & (255<<8))>>8;
 
               yaw2  = ypr1[0] | (ypr1[1]<<8);
-              pitch2= ypr1[2] | (ypr1[3]<<8);
-              roll2 = ypr1[4] | (ypr1[5]<<8);
+              pitch2= ypr1[4] | (ypr1[5]<<8);
+              roll2 = ypr1[2] | (ypr1[3]<<8);
 //              Serial.write('H');
 //              Serial.write(ypr1,6);
-              tn = millis();
-              if(tn-tp>50){
-              Serial.write('H');
-              Serial.write(ypr1,6);
-              tp = tn;
-              }
               
-//              Serial.print("ypr\t");
-//              Serial.print(yaw2);
-//              Serial.print("\t");
-//              Serial.print(pitch2);
-//              Serial.print("\t");
-//              Serial.println(roll2);
+              Serial.print("ypr\t");
+              Serial.print(yaw2);
+              Serial.print("\t");
+              Serial.print(pitch2);
+              Serial.print("\t");
+              Serial.println(roll2);
             }
         #endif
 

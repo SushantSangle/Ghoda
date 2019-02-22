@@ -1,6 +1,5 @@
 void pinmode()
 {
-  
   Serial3.begin(38400);
   Serial.begin(38400);
   while(Serial.available()) Serial.read();

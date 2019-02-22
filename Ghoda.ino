@@ -35,7 +35,7 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,450};      //elbow co-ordinates
+const int elb[2]={0,440};      //elbow co-ordinates
 int els[4][2]; 
 bool mode=0;
 int LEG;
@@ -59,13 +59,13 @@ void setup()
   getangle(4);
   initial();
   delay(3000);
-  Timer1.initialize(50000);
-  Timer1.attachInterrupt(checkMPU);
+//  Timer1.initialize(50000);
+//  Timer1.attachInterrupt(checkMPU);
 }
 
 void loop()
 {
-//  checkMPU();
+  checkMPU();
   RUN(0);
   shift();
 }

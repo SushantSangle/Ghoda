@@ -13,8 +13,8 @@ void proxy()
   
   if((i-46)%90==0)
   {
-    if(p1==1 &&  pMode>=3 && (LEG==0 || LEG==1))  pMode++;
-    if(p1==1 &&  pMode>=1 && (els[0][1]==-100 || els[1][1]==-100) && (LEG==0 || LEG==1)) pMode++ ;
+    if(pMode>=3 && (LEG==0 || LEG==1))  pMode++;
+    if(p1==1 &&  pMode>=1 && (els[0][1]==-100 && els[1][1]==-100) && (LEG==0 || LEG==1)) pMode++ ;
     
     if(LEG==0 && els[0][1]==0 && pMode==1){
       straight();
@@ -38,6 +38,15 @@ void proxy()
       els[1][1]=0;
       Hm[1]=1.5f;
       getangle(1);
+    }
+    if(els[1][1]==0 && els[0][1]==0 && pMode==10 && S==7000){
+      alternate();
+      right();
+      getangle(4);
+    }
+    if(pMode==15 && S==1500){
+      staticG();
+      getangle(4);
     }
   }
 }

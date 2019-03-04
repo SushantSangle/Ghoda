@@ -74,14 +74,18 @@ void shift(){
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
 void test(){
-  dsWrite(3,90);
-  usWrite(3,90);
-  dsWrite(1,90);
-  usWrite(1,90);
-  dsWrite(2,90);
-  usWrite(2,90);
   dsWrite(0,90);
   usWrite(0,90);
+  
+  dsWrite(1,90);
+  usWrite(1,90);
+  
+  dsWrite(2,90);
+  usWrite(2,90);
+  
+  dsWrite(3,90);
+  usWrite(3,90);
+
 //  down[0].write(90);
 //  up[0].write(90);
 //  down[1].write(90);
@@ -89,6 +93,6 @@ void test(){
 //  down[2].write(90);
 //  up[2].write(90);
 //  down[3].write(90);
-//  up[3].write(80);
+//  up[3].write(90);
 }
 /*--------------------------------------------------*/

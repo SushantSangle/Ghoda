@@ -5,7 +5,7 @@
 #include "pta.h"
 
 //definations
-#define l1 250
+#define l1 230
 #define l2 230
 
 #define angle(val,sign,off) ((180+((sign)*(val))+offset[off])%180)

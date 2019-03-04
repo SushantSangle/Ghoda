@@ -1,9 +1,9 @@
 void pinmode()
 {
+  pinMode(3,INPUT);
+  pinMode(2,INPUT);
   Serial3.begin(38400);
   Serial.begin(38400);
-  while(Serial.available()) Serial.read();
-  
   for(int i=0;i<4;i++)
   {
     pinMode(upS[i],OUTPUT);

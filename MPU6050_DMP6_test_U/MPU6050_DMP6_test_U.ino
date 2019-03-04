@@ -71,12 +71,12 @@ void setup() {
 
     devStatus = mpu.dmpInitialize();
 
-    mpu.setXGyroOffset(164);
-    mpu.setYGyroOffset(-12);
-    mpu.setZGyroOffset(42);
-    mpu.setXAccelOffset(-3439);
-    mpu.setYAccelOffset(-1673);
-    mpu.setZAccelOffset(-4530); 
+    mpu.setXGyroOffset(224);
+    mpu.setYGyroOffset(11);
+    mpu.setZGyroOffset(-116);
+    mpu.setXAccelOffset(-3491);
+    mpu.setYAccelOffset(-1705);
+    mpu.setZAccelOffset(4362); 
     
     if (devStatus == 0) {
         mpu.setDMPEnabled(true);
@@ -157,15 +157,15 @@ void loop() {
               yaw2  = ypr1[0] | (ypr1[1]<<8);
               pitch2= ypr1[4] | (ypr1[5]<<8);
               roll2 = ypr1[2] | (ypr1[3]<<8);
-//              Serial.write('H');
-//              Serial.write(ypr1,6);
+              Serial.write('H');
+              Serial.write(ypr1,6);
               
-              Serial.print("ypr\t");
-              Serial.print(yaw2);
-              Serial.print("\t");
-              Serial.print(pitch2);
-              Serial.print("\t");
-              Serial.println(roll2);
+//              Serial.print("ypr\t");
+//              Serial.print(yaw2);
+//              Serial.print("\t");
+//              Serial.print(pitch2);
+//              Serial.print("\t");
+//              Serial.println(roll2);
             }
         #endif
 

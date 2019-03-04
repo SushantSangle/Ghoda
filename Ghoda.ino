@@ -1,11 +1,12 @@
 #include "stdInc.h"
 
-Servo up[4],down[4];//SERVO
+Servo up[4],down[4];      //SERVO
 
 //time interval
 int S = 2;
 //-----------PROXY---------------
-
+bool p1,p0;
+int pMode=0,pMode1=0;
 //-------------------------------
 
 //----------FOR_MPU--------------
@@ -18,24 +19,24 @@ byte ypr1[6];
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
-const uint16_t upS[4]   = {38,30,26,40}; //{34,36,30,32}
-const uint16_t downS[4] = {36,28,32,34}; //{40,38,28,26}
+const uint16_t upS[4]   = {36,40,24,28}; //{38,22,26,40}    //32 is ukkhai servo
+const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const int offset[8]={0,-3,10,-12,-15,-5,-7,-10};
+const uint16_t offset[8]={-3,-1,8,-7,-3,-2,15,4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
 float Lm[4];
-const int upB[4]={1,-1,-1,1};
-const int downB[4]={1,-1,-1,1};
+const int upB[4]=  {1 ,-1 ,-1 ,1  };
+const int downB[4]={1 ,-1 ,-1 ,1  };
 int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,440};      //elbow co-ordinates
+const int elb[2]={0,420};      //elbow co-ordinates
 int els[4][2]; 
 bool mode=0;
 int LEG;
@@ -54,20 +55,22 @@ void setup()
   pinmode();
 //  test();
   initial();
-//  alternate();
-  staticG();
+  alternate();
+//  staticG();
   getangle(4);
   initial();
   delay(3000);
+  
 //  Timer1.initialize(50000);
 //  Timer1.attachInterrupt(checkMPU);
 }
 
 void loop()
 {
-  checkMPU();
+//  checkMPU();
+  proxy();
   RUN(0);
-  shift();
+//  shift();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

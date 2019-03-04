@@ -57,10 +57,12 @@ void setup()
    initial();
    alternate();
  //  staticG();
+   left();
    getangle(4);
    initial();
-  delay(3000);
-  
+//  delay(3000);
+  while(digitalRead(2));
+  delay(200);
 //  Timer1.initialize(50000);
 //  Timer1.attachInterrupt(checkMPU);
 }

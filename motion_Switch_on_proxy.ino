@@ -17,11 +17,13 @@ void proxy()
     if(p1==1 &&  pMode>=1 && (els[0][1]==-100 || els[1][1]==-100) && (LEG==0 || LEG==1)) pMode++ ;
     
     if(LEG==0 && els[0][1]==0 && pMode==1){
+      straight();
       els[0][1]=-100;
       Hm[0]=0.8f;
       getangle(0);
     }
     if(LEG==1 && els[1][1]==0 && pMode==1){
+      straight();
       els[1][1]=-100;
       Hm[1]=0.8f;
       getangle(1);

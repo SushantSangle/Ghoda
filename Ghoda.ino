@@ -24,7 +24,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={0,2,8,-7,0,-2,15,4};
+const uint16_t offset[8]={0,2,8,-14,0,-2,15,4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -53,12 +53,12 @@ int Angle[4][72][2];
 void setup()
 {
   pinmode();
- test();
-//   initial();
-//   alternate();
-// //  staticG();
-//   getangle(4);
-//   initial();
+// test();
+   initial();
+   alternate();
+ //  staticG();
+   getangle(4);
+   initial();
   delay(3000);
   
 //  Timer1.initialize(50000);
@@ -68,8 +68,8 @@ void setup()
 void loop()
 {
 //  checkMPU();
-  // proxy();
-  // RUN(0);
+   proxy();
+   RUN(0);
 //  shift();
 }
 

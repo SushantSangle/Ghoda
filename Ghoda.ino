@@ -57,7 +57,8 @@ void setup()
    initial();
    alternate();
  //  staticG();
-   left();
+//   left();
+   straight();
    getangle(4);
    initial();
 //  delay(3000);
@@ -67,11 +68,18 @@ void setup()
 //  Timer1.attachInterrupt(checkMPU);
 }
 
+bool runMode=0,pstate=1 ;
 void loop()
 {
 //  checkMPU();
-   proxy();
-   RUN(0);
+//   proxy();
+  if(digitalRead(3)==0 && pstate==1)
+  { 
+    runMode=!runMode;
+    pstate=0;
+  }
+  RUN(runMode);
+  pstate=digitalRead(3); 
 //  shift();
 }
 

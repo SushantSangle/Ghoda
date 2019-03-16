@@ -41,13 +41,23 @@ void proxy()
     }
     if(els[1][1]==0 && els[0][1]==0 && pMode==10 && S==7000){
       alternate();
-      right();
+      straight();
+      startC=1;
       getangle(4);
     }
-    if(pMode==15 && S==1500){
-      staticG();
-      getangle(4);
-    }
+  }
+  if(steps==10)
+  {
+    rightEx();
+    getangle(4);
+    steps=100;
+  }
+  if(steps==115)
+  {
+    straight();
+    staticG();
+    getangle(4);
+    steps==200;
   }
 }
 

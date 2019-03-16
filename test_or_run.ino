@@ -16,6 +16,13 @@ void RUN(int p){
         phaseAngle(3,i+270,0);
         break;
     }
+    if((i-46)%90==0)
+    {
+      if(startC)
+      {
+        steps++;
+      }
+    }
     delayMicroseconds(S);
 }
 /*--------------------------------------------------*/
@@ -96,3 +103,13 @@ void test(){
 //  up[3].write(90);
 }
 /*--------------------------------------------------*/
+void pausePlay(){
+  if(digitalRead(3)==0 && pstate==1)
+  { 
+    runMode=!runMode;
+    pstate=0;
+  }
+  RUN(runMode);
+  pstate=digitalRead(3);
+}
+

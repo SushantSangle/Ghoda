@@ -49,6 +49,10 @@ int rot=0,rot1,i=0;             //Rotation of axis
 float slope=0;
 int Angle[4][72][2];
 /*------------------------------------------------*/
+/*-------------------STEP-COUNT-------------------*/
+int steps =0;
+int startC=0;
+/*------------------------------------------------*/
 
 void setup()
 {
@@ -57,13 +61,13 @@ void setup()
    initial();
    alternate();
  //  staticG();
-//   left();
-   straight();
+   left();
+//   straight();
    getangle(4);
    initial();
 //  delay(3000);
   while(digitalRead(2));
-  delay(200);
+  delay(500);
 //  Timer1.initialize(50000);
 //  Timer1.attachInterrupt(checkMPU);
 }
@@ -71,16 +75,8 @@ void setup()
 bool runMode=0,pstate=1 ;
 void loop()
 {
-//  checkMPU();
-//   proxy();
-  if(digitalRead(3)==0 && pstate==1)
-  { 
-    runMode=!runMode;
-    pstate=0;
-  }
-  RUN(runMode);
-  pstate=digitalRead(3); 
-//  shift();
+  proxy();
+  RUN(0);
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

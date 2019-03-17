@@ -1,72 +1,68 @@
-void proxy()
-{
-  p1 = digitalRead(3);
-  p0 = digitalRead(2);
-  if(p0==0 && !pMode1)
-  {
+void proxy(){
+  pf = digitalRead(fp);
+  pr = digitalRead(rp);
+  if(!(pf || pMode1)){
     staticG();
     Hm[0]=1.0;
     Hm[1]=1.0;
-    left();
+    turn(0);
     getangle(4);
     pMode1++;
   }
-  if(p1==0 &&  !pMode)
-  {
-//    staticG();
-//    left();
-//    getangle(4);
-    Hm[1]=1.5;
+  if(!(pr || pMode)){
     Hm[0]=1.5;
-    pMode++ ;
+    Hm[1]=1.5;
+    pMode=1;
   }
-  if(p1==1 && pMode==1 && (els[0][1]==-100 && els[1][1]==-100))  pMode++;  
-  
-  if((i-46)%90==0)
+
+  if( !((i-46)%90) )
   {
-    if(pMode>=3 && (LEG==0 || LEG==1))  pMode++;
-    if(p1==1 &&  pMode>=1 && (els[0][1]==-100 && els[1][1]==-100) && (LEG==0 || LEG==1)) pMode++ ;
-    
-    if(LEG==0 && els[0][1]==0 && pMode==1){
-      els[0][1]= -100;
-      Hm[0]=0.8f;
+    if( (pf && pr) && (els[0][1]== -100 && els[1][1]== -100)) pMode++;
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=4)      pMode++;
+
+    if(pMode==1){       //INTITAL SWITCH OF LEGS
+      if(LEG==1 && els[1][1]==0)
+      {
+        els[1][1]= -100;
+        Hm[1]=0.8f;
+        getangle(1);
+      }
+      else if(LEG==0 && els[0][1]==0)
+      {
+        els[0][1]= -100;
+        Hm[0]=0.8f;
+        getangle(0);
+      }
+    }
+
+    //Increasing height of leg after
+    else if(LEG==0 && els[0][1]==-100 && pMode>=4){
+      els[0][1] = 0;
       getangle(0);
     }
-    if(LEG==1 && els[1][1]==0 && pMode==1){
-      els[1][1]= -100;
-      Hm[1]=0.8f;
+    else if(LEG==1 && els[1][1]==-100 && pMode>=4){
+      els[1][1] = 0;
       getangle(1);
     }
-  
-    if(LEG==0 && els[0][1]==-100 && pMode>=5){
-      els[0][1]=0;
-      Hm[0]=1.5f;
-      getangle(0);
-    }
-    if(LEG==1 && els[1][1]==-100 && pMode>=5){
-      els[1][1]=0;
-      Hm[1]=1.5f;
-      getangle(1);
-    }
-    if(els[1][1]==0 && els[0][1]==0 && pMode==10 && S==7000){
+
+    //switch to alternate pMode
+    else if(els[1][1]==0 && els[0][1]==0 && pMode==15 && S==7000){
       alternate();
-      left();
+      turn(0);
       startC=1;
       getangle(4);
     }
   }
-  if(steps==21)
+  if(steps>=20 && steps<=30)
   {
-    rightEx();
+    turnX(0);
     getangle(4);
     steps=100;
   }
-  if(steps==122)
+  else if(steps>=119 && steps<=130)
   {
-    straight();
     staticG();
     getangle(4);
     steps=200;
   }
 }
-

@@ -1,14 +1,14 @@
 void pinmode()
 {
-  pinMode(3,INPUT);
-  pinMode(2,INPUT);
+  pinMode(fp,INPUT);
+  pinMode(rp,INPUT);
   Serial3.begin(38400);
   Serial.begin(38400);
   for(int i=0;i<4;i++)
   {
     pinMode(upS[i],OUTPUT);
     up[i].attach(upS[i]);
-    
+
     pinMode(downS[i],OUTPUT);
     down[i].attach(downS[i]);
   }
@@ -28,4 +28,8 @@ void initial(){
   phaseAngle(2,0);
   phaseAngle(3,0);
 }
-
+void init(int i){
+  if(i)  initial();
+  getangle(4);
+  initial();
+}

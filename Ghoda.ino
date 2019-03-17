@@ -5,15 +5,17 @@ Servo up[4],down[4];      //SERVO
 //time interval
 int S = 2;
 //-----------PROXY---------------
-bool p1,p0;
+bool pr,pf;
 int pMode=0,pMode1=0;
+int fp=2;
+int rp=3;
 //-------------------------------
 
 //----------FOR_MPU--------------
 
 int yaw2=0,pitch2=0,roll2=0;
 float yaw,pitch,roll;
-float yp=0,pp=0,rp=0;
+//float yp=0,pp=0,rp=0;
 byte ypr1[6];
 
 //-------------------------------
@@ -24,7 +26,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={0,2,8,-14,0,-2,15,4};
+const uint16_t offset[8]={0,2,8,-15,2,8,15,4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -37,7 +39,7 @@ int m;
 
 /*------------POSITION_MANIPULATION---------------*/
 const int elb[2]={0,420};      //elbow co-ordinates
-int els[4][2]; 
+int els[4][2];
 bool mode=0;
 int LEG;
 double xpriv[4]= {0,0,0,0};
@@ -52,27 +54,19 @@ int Angle[4][72][2];
 /*-------------------STEP-COUNT-------------------*/
 int steps =0;
 int startC=0;
+bool runMode=0,pstate=1 ;
 /*------------------------------------------------*/
 
 void setup()
 {
   pinmode();
-// test();
-   initial();
-   alternate();
- //  staticG();
-   left();
-//   straight();
-   getangle(4);
-   initial();
-//  delay(3000);
+//  test();
+  alternate();  turn(0);
+  init(1);
   while(digitalRead(2));
   delay(500);
-//  Timer1.initialize(50000);
-//  Timer1.attachInterrupt(checkMPU);
 }
 
-bool runMode=0,pstate=1 ;
 void loop()
 {
   proxy();

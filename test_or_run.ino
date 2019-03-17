@@ -16,18 +16,11 @@ void RUN(int p){
         phaseAngle(3,i+270,0);
         break;
     }
-    if((i-46)%90==0)
-    {
-      if(startC)
-      {
-        steps++;
-      }
-    }
     delayMicroseconds(S);
 }
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
-void shift(){  
+void shift(){
 //    if(roll  < -6   && els[3][1]< 0 && els[1][1]==0 ) stand();
 //-ve -> / and +ve -> \0
 //  if(roll  >  7   && els[3][1]==0 && els[0][1]==0 ) Raise();
@@ -55,9 +48,9 @@ void shift(){
               xnow[2]= Sh*-1;
               xnow[3]= Sh*-1;
               break;
-    }  
+    }
     RUN(1);
-    
+
     if(xpriv[0]!=xnow[0])
     {
       for(int t=0 ; t<3 ; t++)
@@ -72,7 +65,7 @@ void shift(){
     xpriv[0] = xnow[0];
     xpriv[1] = xnow[1];
     xpriv[2] = xnow[2];
-    xpriv[3] = xnow[3];    
+    xpriv[3] = xnow[3];
     delay(150);
   }
   if(roll  >  6   && els[0][1]< 0 && els[3][1]==0 ) stand();
@@ -83,13 +76,13 @@ void shift(){
 void test(){
   dsWrite(0,90);
   usWrite(0,90);
-  
+
   dsWrite(1,90);
   usWrite(1,90);
-  
+
   dsWrite(2,90);
   usWrite(2,90);
-  
+
   dsWrite(3,90);
   usWrite(3,90);
 
@@ -105,11 +98,10 @@ void test(){
 /*--------------------------------------------------*/
 void pausePlay(){
   if(digitalRead(3)==0 && pstate==1)
-  { 
+  {
     runMode=!runMode;
     pstate=0;
   }
   RUN(runMode);
   pstate=digitalRead(3);
 }
-

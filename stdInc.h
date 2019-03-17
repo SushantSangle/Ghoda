@@ -12,3 +12,5 @@
 #define pi 3.14159265
 #define toD(a) ((a)*pi/180)
 #define s(a) (((a)*(a)))
+
+

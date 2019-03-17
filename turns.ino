@@ -1,9 +1,9 @@
 void left()
 {
-  Lm[0]=0.77f;
-  Lm[2]=0.77f;
-  Lm[1]=1.095f;
-  Lm[3]=1.095f;
+  Lm[0]=0.75f;
+  Lm[2]=0.75f;
+  Lm[1]=1.1f;
+  Lm[3]=1.1f;
 }
 void right()
 {
@@ -18,7 +18,7 @@ void straight()
   Lm[2]=1.0f;
   Lm[3]=1.0f;
   Lm[1]=1.0f;
-  
+
 }
 void leftEx()
 {
@@ -36,3 +36,13 @@ void rightEx()
   Lm[3]=0.0f;
 }
 
+void turn(bool arena) //0 for left 1 for right
+{
+  if(!arena) left();
+  else      right();
+}
+void turnX(bool arena)
+{
+  if(!arena) rightEx();
+  else        leftEx();
+}

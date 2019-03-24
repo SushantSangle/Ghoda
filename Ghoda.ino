@@ -1,6 +1,7 @@
 #include "stdInc.h"
 
 Servo up[4],down[4];      //SERVO
+Servo UK;
 
 //time interval
 int S = 2;
@@ -26,7 +27,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={0,2,8,-15,2,8,15,4};
+const uint16_t offset[8]={-10,0,-6,-12,-30,-7,-15,-3};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -41,13 +42,13 @@ int m;
 const int elb[2]={0,420};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
-int LEG;
+int LEG; 
 double xpriv[4]= {0,0,0,0};
 double xnow[4] = {0,0,0,0};
 /*------------------------------------------------*/
 
 /*---------------ANGLE_MANIPULATION---------------*/
-int rot=0,rot1,i=0;             //Rotation of axis
+int rot=0,rot1=0,i=0;             //Rotation of axis
 float slope=0;
 int Angle[4][72][2];
 /*------------------------------------------------*/
@@ -62,14 +63,17 @@ void setup()
   pinmode();
 //  test();
   alternate();  turn(0);
-  init(1);
+  initial();
+//  dune();
+  getangle(4);
+  initial();
   while(digitalRead(2));
-  delay(500);
+  delay(300);
 }
 
 void loop()
 {
-  proxy();
+//  proxy();
   RUN(0);
 }
 

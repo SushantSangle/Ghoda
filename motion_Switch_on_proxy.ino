@@ -17,8 +17,8 @@ void proxy(){
 
   if( !((i-46)%90) )
   {
-    if( (pf && pr) && (els[0][1]== -100 && els[1][1]== -100)) pMode++;
-    else if(els[0][1]==0 && els[1][1]==0 && pMode>=4)      pMode++;
+    if(els[0][1]== -100 && els[1][1]== -100) pMode++;
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=8)      pMode++;
 
     if(pMode==1){       //INTITAL SWITCH OF LEGS
       if(LEG==1 && els[1][1]==0)
@@ -36,17 +36,17 @@ void proxy(){
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && pMode>=4){
+    else if(LEG==0 && els[0][1]==-100 && pMode>=8){
       els[0][1] = 0;
       getangle(0);
     }
-    else if(LEG==1 && els[1][1]==-100 && pMode>=4){
+    else if(LEG==1 && els[1][1]==-100 && pMode>=8){
       els[1][1] = 0;
       getangle(1);
     }
 
     //switch to alternate pMode
-    else if(els[1][1]==0 && els[0][1]==0 && pMode==15 && S==7000){
+    else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==7000){
       alternate();
       turn(0);
       startC=1;
@@ -59,7 +59,7 @@ void proxy(){
     getangle(4);
     steps=100;
   }
-  else if(steps>=119 && steps<=130)
+  else if(steps>=126 && steps<=130)
   {
     staticG();
     getangle(4);

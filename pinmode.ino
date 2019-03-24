@@ -2,8 +2,9 @@ void pinmode()
 {
   pinMode(fp,INPUT);
   pinMode(rp,INPUT);
-  Serial3.begin(38400);
+   Serial3.begin(38400);
   Serial.begin(38400);
+  UK.attach(uk);
   for(int i=0;i<4;i++)
   {
     pinMode(upS[i],OUTPUT);

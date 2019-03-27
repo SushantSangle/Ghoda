@@ -18,12 +18,15 @@ void straight()
   Lm[2]=1.0f;
   Lm[3]=1.0f;
   Lm[1]=1.0f;
+  
 
 }
 void leftEx()
 {
   Lm[0]=0.0f;
   Lm[2]=0.0f;
+  Hm[0]=0.0f;
+  Hm[2]=0.0f;
   Lm[1]=1.0f;
   Lm[3]=1.0f;
 }

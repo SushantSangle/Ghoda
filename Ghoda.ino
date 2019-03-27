@@ -16,8 +16,9 @@ int rp=3;
 
 int yaw2=0,pitch2=0,roll2=0;
 float yaw,pitch,roll;
-//float yp=0,pp=0,rp=0;
-byte ypr1[6];
+float yp=0,pp=0,rpr=0;
+char ypr1[6];
+int baseY=0;
 
 //-------------------------------
 
@@ -27,7 +28,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-10,0,-6,-12,-30,-7,-15,-3};
+const uint16_t offset[8]={-10,0,-6,-12,-13,-7,-15,-3};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -54,6 +55,7 @@ int Angle[4][72][2];
 /*------------------------------------------------*/
 /*-------------------STEP-COUNT-------------------*/
 int steps =0;
+int Step=0;
 int startC=0;
 bool runMode=0,pstate=1 ;
 /*------------------------------------------------*/
@@ -61,20 +63,30 @@ bool runMode=0,pstate=1 ;
 void setup()
 {
   pinmode();
-//  test();
-  alternate();  turn(0);
-  initial();
-//  dune();
-  getangle(4);
-  initial();
-  while(digitalRead(2));
-  delay(300);
+  test();
+//  alternate();
+//  initial();
+////  dune();
+//  getangle(4);
+//  initial();
+//  while(digitalRead(2)){
+//    checkMPU();
+//  }
+//  delay(300);
 }
-
+int timen=0,timep=0;
 void loop()
 {
+//  timen=millis();
+//  if(timen-timep>50)
+//  {
+//    checkMPU();
+//    timep=timen;
+//    Serial.println(Step);
+//  }
+//  stepCount();
 //  proxy();
-  RUN(0);
+//  RUN(0);
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

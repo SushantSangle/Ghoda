@@ -1,35 +1,31 @@
 /*-----------------------MPU-check----------------------*/
-//void checkMPU(){
-//  if(Serial3.available()){
-//    while(Serial3.read()!='H');
-//    delay(3);
-//    if(Serial3.available()) Serial3.readBytes(ypr1,6);
+void checkMPU(){
+  if(Serial3.available()){
+    while(Serial3.read()!='H');
 //    yaw2  = ypr1[0] | (ypr1[1]<<8);
 //    pitch2= ypr1[4] | (ypr1[5]<<8);
 //    roll2 = ypr1[2] | (ypr1[3]<<8);
-//  }
-//  if(abs(yaw2)   > 50)                        yaw2   = yp;
-//  if(abs(pitch2) > 10)                        pitch2 = pp;
-//  if(roll2  > 25 || roll2 < -25)              roll2  = roll;
-//  if(abs(roll2-yaw2)<=3 || abs(roll-yaw2)<=3) roll2  = roll;
-//  
-//
-//  float d1=1.0f,d2=0.0f;
-//  yaw   = d1*yaw2   + d2*yp;
-//  pitch = d1*pitch2 + d2*pp;
-//  roll  = d1*roll2  + d2*rp;
-//   
-//  Serial.print("ypr\t");
-//  Serial.print(yaw);
-//  Serial.print("\t");
-//  Serial.print(pitch);
-//  Serial.print("\t");
-//  Serial.println(roll);
-//  yp = yaw;
-//  pp = pitch;
-//  rp = roll;
-// 
-//}
+    yaw2  = Serial3.parseInt();
+    pitch2= Serial3.parseInt();
+    roll2 = Serial3.parseInt();  
+  }
+ 
+  float d1=1.0f,d2=0.0f;
+  yaw   = d1*yaw2   + d2*yp;
+  pitch = d1*pitch2 + d2*pp;
+  roll  = d1*roll2  + d2*rpr;
+  yaw   = 180 + yaw;
+  Serial.print("ypr\t");
+  Serial.print(yaw);
+  Serial.print("\t");
+  Serial.print(pitch);
+  Serial.print("\t");
+  Serial.println(roll);
+  yp = yaw;
+  pp = pitch;
+  rpr = roll;
+ 
+}
 /*------------------------------------------------*/
 
 /*------------------STAND-OR-BOW------------------*/

@@ -66,3 +66,20 @@ void proxy(){
     steps=200;
   }
 }
+void stepCount(){
+  if(Step==10){
+    leftEx();
+    getangle(4);
+    Step=100;
+    baseY = yaw;
+  }
+  else if(Step>99 && Step<200){
+    if(yaw-baseY>45){
+      straight();
+      alternate();
+      getangle(4);
+      Step=200;
+    }
+  }
+}
+

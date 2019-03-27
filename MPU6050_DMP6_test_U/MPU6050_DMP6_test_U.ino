@@ -94,7 +94,7 @@ void setup() {
     pinMode(LED_PIN, OUTPUT);
 }
 int yaw,pitch,roll;
-byte ypr1[6];
+char ypr1[6];
 int yaw2,pitch2,roll2;
 
 /* ================================================================
@@ -103,7 +103,6 @@ int yaw2,pitch2,roll2;
 char e;
 float tn=0,tp=0;
 void loop() {
-    tn = millis();
 
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
@@ -141,7 +140,7 @@ void loop() {
             mpu.dmpGetGravity(&gravity, &q);
             mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
             e='y';
-            if(Serial.available())  e=Serial.read();     
+            if(Serial.available())  e=Serial.read();    
             if(e=='y')
             {
               yaw   = ypr[0] * 180/M_PI;
@@ -157,15 +156,18 @@ void loop() {
               yaw2  = ypr1[0] | (ypr1[1]<<8);
               pitch2= ypr1[4] | (ypr1[5]<<8);
               roll2 = ypr1[2] | (ypr1[3]<<8);
-              Serial.write('H');
-              Serial.write(ypr1,6);
-              
-//              Serial.print("ypr\t");
-//              Serial.print(yaw2);
-//              Serial.print("\t");
-//              Serial.print(pitch2);
-//              Serial.print("\t");
-//              Serial.println(roll2);
+              tn=millis();
+              if(tn-tp>40)
+              {
+                Serial.print('H');
+                Serial.print(" ");
+                Serial.print(yaw);
+                Serial.print(" ");
+                Serial.print(pitch);
+                Serial.print(" ");
+                Serial.println(roll);
+                tp=tn;
+              }
             }
         #endif
 

@@ -5,13 +5,13 @@ void alternate(){
     for(int j=0;j<2;j++) pt[i][j] = pta[i][j];
   }
   mode = 0;
-  Hm[0]= 0.8f;
-  Hm[1]= 0.8f;
-  Hm[2]= 0.8f;
-  Hm[3]= 0.8f;
-  Lm[0]= 1.0f;
+  Hm[0]= 0.7f;
+  Hm[1]= 0.7f;
+  Hm[2]= 0.7f;
+  Hm[3]= 0.7f;
+  Lm[0]= 0.9f;
   Lm[1]= 1.0f;
-  Lm[2]= 1.0f;
+  Lm[2]= 0.9f;
   Lm[3]= 1.0f;
   els[0][0] = 0;
   els[0][1] = 0;

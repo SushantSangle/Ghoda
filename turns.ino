@@ -1,9 +1,9 @@
 void left()
 {
-  Lm[0]=0.65f;
-  Lm[2]=0.65f;
-  Lm[1]=1.2f;
-  Lm[3]=1.2f;
+  Lm[0]=0.7f;
+  Lm[2]=0.7f;
+  Lm[1]=1.1f;
+  Lm[3]=1.1f;
 }
 void right()
 {

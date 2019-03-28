@@ -36,11 +36,11 @@ void proxy(){
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && pMode>=8){
+    else if(LEG==0 && els[0][1]==-100 && pMode>=7){
       els[0][1] = 0;
       getangle(0);
     }
-    else if(LEG==1 && els[1][1]==-100 && pMode>=8){
+    else if(LEG==1 && els[1][1]==-100 && pMode>=7){
       els[1][1] = 0;
       getangle(1);
     }
@@ -67,7 +67,7 @@ void proxy(){
   }
 }
 void stepCount(){
-  if(Step==10){
+  if(Step==9){
     leftEx();
     getangle(4);
     Step=100;

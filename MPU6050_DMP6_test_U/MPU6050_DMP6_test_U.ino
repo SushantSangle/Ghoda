@@ -71,12 +71,12 @@ void setup() {
 
     devStatus = mpu.dmpInitialize();
 
-    mpu.setXGyroOffset(224);
-    mpu.setYGyroOffset(11);
-    mpu.setZGyroOffset(-116);
-    mpu.setXAccelOffset(-3491);
-    mpu.setYAccelOffset(-1705);
-    mpu.setZAccelOffset(4362); 
+    mpu.setXGyroOffset(555);
+    mpu.setYGyroOffset(-138);
+    mpu.setZGyroOffset(42);
+    mpu.setXAccelOffset(-74);
+    mpu.setYAccelOffset(-491);
+    mpu.setZAccelOffset(5099); 
     
     if (devStatus == 0) {
         mpu.setDMPEnabled(true);

@@ -19,6 +19,7 @@ float yaw,pitch,roll;
 float yp=0,pp=0,rpr=0;
 char ypr1[6];
 int baseY=0;
+bool q=0;
 
 //-------------------------------
 
@@ -28,7 +29,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-10,0,-10,-8,-10,0,-10,-3};
+const uint16_t offset[8]={-10,0,-8,0,-10,0,-10,-4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -40,7 +41,7 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,420};      //elbow co-ordinates
+const int elb[2]={0,430};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG; 
@@ -63,30 +64,34 @@ bool runMode=0,pstate=1 ;
 void setup()
 {
   pinmode();
-  test();
-//  alternate();
-//  initial();
-////  dune();
-//  getangle(4);
-//  initial();
-//  while(digitalRead(2)){
-//    checkMPU();
-//  }
-//  delay(300);
+//  test();
+  alternate();// turn(0);
+  initial();
+//  dune();
+  getangle(4);
+  initial();
+  delay(2000);
+  while(digitalRead(9))
+  {
+    checkMPU();
+  }
+  
 }
 int timen=0,timep=0;
 void loop()
 {
-//  timen=millis();
-//  if(timen-timep>50)
-//  {
-//    checkMPU();
-//    timep=timen;
-//    Serial.println(Step);
-//  }
-//  stepCount();
-//  proxy();
+  timen=millis();
+  if(timen-timep>50)
+  {
+    checkMPU();
+    timep=timen;
+    Serial.println(Step);
+  }
+  q=true;
+  stepCount();
 //  RUN(0);
+//  proxy();
+
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

@@ -9,12 +9,14 @@ void checkMPU(){
     pitch2= Serial3.parseInt();
     roll2 = Serial3.parseInt();  
   }
- 
+  yaw   = 180 + yaw;
+
   float d1=1.0f,d2=0.0f;
   yaw   = d1*yaw2   + d2*yp;
   pitch = d1*pitch2 + d2*pp;
   roll  = d1*roll2  + d2*rpr;
-  yaw   = 180 + yaw;
+  if( abs(yaw-yp) > 50 && q) yaw = yp;
+  
   Serial.print("ypr\t");
   Serial.print(yaw);
   Serial.print("\t");

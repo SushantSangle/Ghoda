@@ -7,26 +7,27 @@ void checkMPU(){
 //    roll2 = ypr1[2] | (ypr1[3]<<8);
     yaw2  = Serial3.parseInt();
     pitch2= Serial3.parseInt();
-    roll2 = Serial3.parseInt();  
+    roll2 = Serial3.parseInt();
   }
-  yaw   = 180 + yaw;
 
   float d1=1.0f,d2=0.0f;
   yaw   = d1*yaw2   + d2*yp;
   pitch = d1*pitch2 + d2*pp;
   roll  = d1*roll2  + d2*rpr;
-  if( abs(yaw-yp) > 50 && q) yaw = yp;
-  
+  if( abs(yaw  -yp) > 50 && q) yaw = yp;
+  if( abs(pitch-pp) > 50 && q) pitch = pp;
+  if( abs(roll -rpr) > 50 && q) roll = rpr;
+  yp  = yaw;
+  pp  = pitch;
+  rpr = roll;
+
+  yaw = yaw +180;
   Serial.print("ypr\t");
   Serial.print(yaw);
   Serial.print("\t");
   Serial.print(pitch);
   Serial.print("\t");
   Serial.println(roll);
-  yp = yaw;
-  pp = pitch;
-  rpr = roll;
- 
 }
 /*------------------------------------------------*/
 

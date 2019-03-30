@@ -29,7 +29,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-10,0,-8,0,-10,0,-10,-4};
+const uint16_t offset[8]={-2,0,-10,-8,-18,-7,3,-11};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -59,23 +59,27 @@ int steps =0;
 int Step=0;
 int startC=0;
 bool runMode=0,pstate=1 ;
+bool gobi=0;
 /*------------------------------------------------*/
 
 void setup()
 {
   pinmode();
 //  test();
-  alternate();// turn(0);
+//  staticG();
+  alternate(); 
+  left();
   initial();
 //  dune();
   getangle(4);
   initial();
-  delay(2000);
+//  delay(2000);
   while(digitalRead(9))
   {
     checkMPU();
   }
-  
+  baseY = yaw;
+  gobi  = true;
 }
 int timen=0,timep=0;
 void loop()
@@ -89,9 +93,8 @@ void loop()
   }
   q=true;
   stepCount();
-//  RUN(0);
-//  proxy();
-
+  RUN(0);
+  proxy();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

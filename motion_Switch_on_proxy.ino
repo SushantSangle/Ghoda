@@ -18,16 +18,16 @@ void proxy(){
   {
     if(els[0][1]== -100 && els[1][1]== -100) 
       pMode++;
-    else if(els[0][1]==0 && els[1][1]==0 && pMode>=8)      
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=7)      
       pMode++;
 
-    if(roll>10 && els[0][1]==0 &&els[1][1]==0)
-    {
-      els[0][1]==-100;
-      els[1][1]==-100;
-      getangle(1);
-      getangle(0);
-    }
+//    if(roll>10 && els[0][1]==0 &&els[1][1]==0)
+//    {
+//      els[0][1]==-100;
+//      els[1][1]==-100;
+//      getangle(1);
+//      getangle(0);
+//    }
     if(pMode==1){       //INTITAL SWITCH OF LEGS
       if(LEG==1 && els[1][1]==0)
       {
@@ -46,11 +46,11 @@ void proxy(){
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && pMode>=8){
+    else if(LEG==0 && els[0][1]==-100 && pMode>=7){
       els[0][1] = 0;
       getangle(0);
     }
-    else if(LEG==1 && els[1][1]==-100 && pMode>=8){
+    else if(LEG==1 && els[1][1]==-100 && pMode>=7){
       els[1][1] = 0;
       getangle(1);
     }
@@ -64,7 +64,7 @@ void proxy(){
     }
 
     //switch to alternate pMode
-    else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==7000){
+    else if(els[1][1]==0 && els[0][1]==0 && pMode==16 && S==7000){
       alternate();
       left();
       Lm[0]=0.65f;
@@ -72,7 +72,7 @@ void proxy(){
       startC=1;
       baseY = yaw;
       Step=300;
-      pMode++;
+      pMode=1000;
       getangle(4);
     }
 //    else if(steps>=126 && steps<=130)
@@ -86,13 +86,13 @@ void proxy(){
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  if(Step==13){
+  if(Step==11){
 //    leftEx();
 //    getangle(4);
     Step=100;
 //    baseY = yaw;
   }
-  else if(Step>13 && Step<200){
+  else if(Step>11 && Step<200){
     if((diff>150 && diff<315) || idiff>45 || Step>103){
       gobi=true;
       alternate();
@@ -101,15 +101,17 @@ void stepCount(){
       Step=200;
     }
   }
-  else if(Step<400 && Step>305){
+  else if(Step<400 && Step>302){
     initial();
     rightEx();
     getangle(4);
     Step=400;
   }
   else if(Step>399 && Step<500){
-    if(diff>39 || (idiff>150 && idiff<321)){
-      right();
+//    if(diff>40 || (idiff>150 && idiff<320) || Step>411)
+    if(Step>412)
+    {
+//      right();
       staticG();
       Hm[0] = 1.7;
       Hm[1] = 1.7;

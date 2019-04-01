@@ -1,7 +1,7 @@
 void left()
 {
-  Lm[0]=0.75f;
-  Lm[2]=0.75f;
+  Lm[0]=0.750f;
+  Lm[2]=0.750f;
   Lm[1]=1.1f;
   Lm[3]=1.1f;
 }
@@ -12,7 +12,7 @@ void right()
   Lm[0]=1.0f;
   Lm[2]=1.0f;
 }
-void straight()
+void straight() 
 {
   Lm[0]=1.0f;
   Lm[2]=1.0f;

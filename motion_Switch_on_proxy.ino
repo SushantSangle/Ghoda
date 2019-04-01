@@ -5,7 +5,6 @@ void proxy(){
     staticG();
     Hm[0]=1.0;
     Hm[1]=1.0;
-    turn(0);
     getangle(4);
     pMode1++;
   }
@@ -15,10 +14,12 @@ void proxy(){
     pMode=1;
   }
 
-  if( !((i-46)%90) )
+  if( !((i-46)%90) && gobi)
   {
-    if(els[0][1]== -100 && els[1][1]== -100) pMode++;
-    else if(els[0][1]==0 && els[1][1]==0 && pMode>=7)      pMode++;
+    if(els[0][1]== -100 && els[1][1]== -100) 
+      pMode++;
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=8)      
+      pMode++;
 
     if(roll>10 && els[0][1]==0 &&els[1][1]==0)
     {
@@ -31,85 +32,91 @@ void proxy(){
       if(LEG==1 && els[1][1]==0)
       {
         els[1][1]= -100;
-        Hm[1]=0.8f;
+        Hm[1]=1.5f;
+        Lm[1]=1.2f;
         getangle(1);
       }
       else if(LEG==0 && els[0][1]==0)
       {
         els[0][1]= -100;
-        Hm[0]=0.8f;
+        Hm[0]=1.5f;
+        Lm[0]=1.2f;
         getangle(0);
       }
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && pMode>=7){
+    else if(LEG==0 && els[0][1]==-100 && pMode>=8){
       els[0][1] = 0;
       getangle(0);
     }
-    else if(LEG==1 && els[1][1]==-100 && pMode>=7){
+    else if(LEG==1 && els[1][1]==-100 && pMode>=8){
       els[1][1] = 0;
       getangle(1);
     }
-//    //raise both legs up if pitch drops
-//    if((els[0][1]==-100 || els[1][1]==-100) && roll<-6)
-//    {
-//      els[1][1]=0;
-//      els[0][1]=0;
-//      getangle(1);
-//      getangle(0);
-//    }
+    //raise both legs up if pitch drops
+    if((els[0][1]==-100 || els[1][1]==-100) && roll<-6)
+    {
+      els[1][1]=0;
+      els[0][1]=0;
+      getangle(1);
+      getangle(0);
+    }
 
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==7000){
       alternate();
-      turn(0);
+      left();
+      Lm[0]=0.65f;
+      Lm[2]=0.65f;
       startC=1;
       baseY = yaw;
       Step=300;
+      pMode++;
       getangle(4);
     }
-  }
-//  if(steps>=20 && steps<=30)
-//  {
-//    turnX(0);
-//    getangle(4);
-//    steps=100;
-//  }
-  else if(steps>=126 && steps<=130)
-  {
-    staticG();
-    getangle(4);
-    steps=200;
+//    else if(steps>=126 && steps<=130)
+//    {
+//      staticG();
+//      getangle(4);
+//      steps=200;
+//    }
   }
 }
 void stepCount(){
-  if(Step==17){
+  int diff = baseY-yaw;
+  int idiff = diff*-1;
+  if(Step==13){
 //    leftEx();
 //    getangle(4);
-//    Step=100;
+    Step=100;
 //    baseY = yaw;
   }
-  else if(Step>11 && Step<200){
-    if(yaw-(baseY-360)>40 || yaw-baseY>40 || Step>107){
+  else if(Step>13 && Step<200){
+    if((diff>150 && diff<315) || idiff>45 || Step>103){
       gobi=true;
       alternate();
+      left();
       getangle(4);
       Step=200;
     }
   }
-  else if(Step>305 && Step<400){
+  else if(Step<400 && Step>305){
+    initial();
     rightEx();
     getangle(4);
     Step=400;
   }
   else if(Step>399 && Step<500){
-    if(baseY-yaw>39 || baseY-(yaw-360)>39){
-      straight();
+    if(diff>39 || (idiff>150 && idiff<321)){
+      right();
       staticG();
+      Hm[0] = 1.7;
+      Hm[1] = 1.7;
+      Hm[2] = 1.7;
+      Hm[3] = 1.7;
       getangle(4);
       Step=500;
     }
   }
 }
-

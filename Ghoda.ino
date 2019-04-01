@@ -29,7 +29,7 @@ const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-2,0,-10,-8,-18,-7,3,-11};
+const uint16_t offset[8]={-2,0,-5,-9,-3,4,3,0};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -41,7 +41,7 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,430};      //elbow co-ordinates
+const int elb[2]={0,440};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG; 
@@ -67,9 +67,10 @@ void setup()
   pinmode();
 //  test();
 //  staticG();
-  alternate(); 
+  alternate();
   left();
   initial();
+//  rightEx();
 //  dune();
   getangle(4);
   initial();
@@ -79,7 +80,8 @@ void setup()
     checkMPU();
   }
   baseY = yaw;
-  gobi  = true;
+  q=true;
+//  gobi  = true;
 }
 int timen=0,timep=0;
 void loop()
@@ -91,7 +93,6 @@ void loop()
     timep=timen;
     Serial.println(Step);
   }
-  q=true;
   stepCount();
   RUN(0);
   proxy();

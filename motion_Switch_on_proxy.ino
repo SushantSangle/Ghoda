@@ -109,7 +109,7 @@ void stepCount(){
   }
   else if(Step>399 && Step<500){
 //    if(diff>40 || (idiff>150 && idiff<320) || Step>411)
-    if(Step>412)
+    if(Step>41)
     {
 //      right();
       staticG();

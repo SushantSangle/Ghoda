@@ -72,7 +72,7 @@ void phaseAngle(int leg,int p,int dir=0){
 /*----------------angles_to_servo-----------------*/
 void usWrite(int i,int ang) //for giving angle to upper servo
 {
-  if(i == 0 || i == 1)
+  if(i<2)
     up[i].write(angle(ang+rot,upB[i],i));
   else
     up[i].write(angle(ang-rot,upB[i],i));

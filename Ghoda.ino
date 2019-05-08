@@ -8,8 +8,8 @@ int S = 2;
 //-----------PROXY---------------
 bool pr,pf;
 int pMode=0,pMode1=0;
-int fp=2;
-int rp=3;
+int fp=A1;
+int rp=A0;
 //-------------------------------
 
 //----------FOR_MPU--------------
@@ -24,12 +24,14 @@ bool q=0;
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
-const uint16_t upS[4]   = {36,40,24,28}; //{38,22,26,40}    //32 is ukkhai servo
-const uint16_t downS[4] = {34,38,22,26}; //{34,28,24,36}
+const uint16_t upS[4]   = {46,48,41,42}; 
+//{38,22,26,40}  
+const uint16_t downS[4] = {47,49,40,43}; 
+//{34,28,24,36}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-2,0,-5,-9,-3,4,3,0};
+const uint16_t offset[8]={-6,-8,-2,15,-23,15,18,-4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -41,7 +43,7 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,440};      //elbow co-ordinates
+const int elb[2]={0,430};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG; 
@@ -65,34 +67,36 @@ bool gobi=0;
 void setup()
 {
   pinmode();
-//  test();
-//  staticG();
+  test();
+  staticG();
   alternate();
-  left();
-  initial();
-//  rightEx();
-//  dune();
+//  left();
+//  initial();
+////  rightEx();
+////  dune();
   getangle(4);
   initial();
-//  delay(2000);
-  while(digitalRead(9))
-  {
-    checkMPU();
-  }
-  baseY = yaw;
-  q=true;
+////  delay(2000);
+//  while(digitalRead(9))
+//  {
+//    checkMPU();
+//  }
+//  baseY = yaw;
+//  q=true;
 //  gobi  = true;
+  while(digitalRead(fp));
+  while(digitalRead(rp));
 }
 int timen=0,timep=0;
 void loop()
 {
-  timen=millis();
-  if(timen-timep>50)
-  {
-    checkMPU();
-    timep=timen;
-    Serial.println(Step);
-  }
+//  timen=millis();
+//  if(timen-timep>50)
+//  {
+//    checkMPU();
+//    timep=timen;
+//    Serial.println(Step);
+//  }
   stepCount();
   RUN(0);
   proxy();

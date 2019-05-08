@@ -6,8 +6,8 @@
 
 #define stdinc
 //definations
-#define l1 230
-#define l2 235
+#define l1 240
+#define l2 225
 
 #define angle(val,sign,off) ((180+((sign)*(val))+offset[off])%180)
 #define pi 3.14159265

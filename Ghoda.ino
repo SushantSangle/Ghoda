@@ -24,7 +24,7 @@ bool q=0;
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
-const uint16_t upS[4]   = {46,48,41,42}; 
+const uint16_t upS[4]   = {46,48,41,42};  
 //{38,22,26,40}  
 const uint16_t downS[4] = {47,49,40,43}; 
 //{34,28,24,36}
@@ -67,11 +67,11 @@ bool gobi=0;
 void setup()
 {
   pinmode();
-  test();
-  staticG();
+//  test();
+//  staticG();
   alternate();
 //  left();
-//  initial();
+  initial();
 ////  rightEx();
 ////  dune();
   getangle(4);
@@ -83,21 +83,23 @@ void setup()
 //  }
 //  baseY = yaw;
 //  q=true;
-//  gobi  = true;
+  gobi  = true;
   while(digitalRead(fp));
   while(digitalRead(rp));
+  delay(300);
+  q=true;
 }
 int timen=0,timep=0;
 void loop()
 {
-//  timen=millis();
-//  if(timen-timep>50)
-//  {
-//    checkMPU();
-//    timep=timen;
-//    Serial.println(Step);
-//  }
-  stepCount();
+  timen=millis();
+  if(timen-timep>50)
+  {
+    Serial.println(Step);
+    checkMPU();
+    timep=timen;
+  }
+//  stepCount();
   RUN(0);
   proxy();
 }

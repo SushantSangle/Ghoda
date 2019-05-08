@@ -14,8 +14,8 @@ void checkMPU(){
   yaw   = d1*yaw2   + d2*yp;
   pitch = d1*pitch2 + d2*pp;
   roll  = d1*roll2  + d2*rpr;
-  if( abs(yaw  -yp) > 50 && q) yaw = yp;
-  if( abs(pitch-pp) > 50 && q) pitch = pp;
+  if( abs(yaw  -yp) > 50 &&  q) yaw = yp;
+  if( abs(pitch-pp) > 50 &&  q) pitch = pp;
   if( abs(roll -rpr) > 50 && q) roll = rpr;
   yp  = yaw;
   pp  = pitch;

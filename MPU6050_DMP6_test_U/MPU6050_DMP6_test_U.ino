@@ -1,11 +1,12 @@
-#include "I2Cdev.h"
+#include <SoftwareSerial.h>
 
+#include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 
 #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
     #include "Wire.h"
 #endif
-
+SoftwareSerial S(6,5);
 MPU6050 mpu;
 //MPU6050 mpu(0x69); // <-- use for AD0 high
 
@@ -61,7 +62,7 @@ void setup() {
     #elif I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
         Fastwire::setup(400, true);
     #endif
-
+    S.begin(38400);
     Serial.begin(38400);
 //    while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
@@ -146,18 +147,18 @@ void loop() {
               yaw   = ypr[0] * 180/M_PI;
               pitch = ypr[1] * 180/M_PI;
               roll  = ypr[2] * 180/M_PI;
-              ypr1[0] = (yaw   & 255);
-              ypr1[1] = (yaw   & (255<<8))>>8;
-              ypr1[4] = (pitch & 255);
-              ypr1[5] = (pitch & (255<<8))>>8;
-              ypr1[2] = (roll  & 255);
-              ypr1[3] = (roll  & (255<<8))>>8;
-
-              yaw2  = ypr1[0] | (ypr1[1]<<8);
-              pitch2= ypr1[4] | (ypr1[5]<<8);
-              roll2 = ypr1[2] | (ypr1[3]<<8);
+//              ypr1[0] = (yaw   & 255);
+//              ypr1[1] = (yaw   & (255<<8))>>8;
+//              ypr1[4] = (pitch & 255);
+//              ypr1[5] = (pitch & (255<<8))>>8;
+//              ypr1[2] = (roll  & 255);
+//              ypr1[3] = (roll  & (255<<8))>>8;
+//
+//              yaw2  = ypr1[0] | (ypr1[1]<<8);
+//              pitch2= ypr1[4] | (ypr1[5]<<8);
+//              roll2 = ypr1[2] | (ypr1[3]<<8);
               tn=millis();
-              if(tn-tp>40)
+              if(tn-tp>41)
               {
                 Serial.print('H');
                 Serial.print(" ");
@@ -166,6 +167,13 @@ void loop() {
                 Serial.print(pitch);
                 Serial.print(" ");
                 Serial.println(roll);
+                S.print('H');
+                S.print(" ");
+                S.print(yaw);
+                S.print(" ");
+                S.print(pitch);
+                S.print(" ");
+                S.println(roll);
                 tp=tn;
               }
             }

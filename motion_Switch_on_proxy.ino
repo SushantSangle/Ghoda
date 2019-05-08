@@ -18,7 +18,7 @@ void proxy(){
   {
     if(els[0][1]== -100 && els[1][1]== -100) 
       pMode++;
-    else if(els[0][1]==0 && els[1][1]==0 && pMode>=7)      
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=6)      
       pMode++;
 
 //    if(roll>10 && els[0][1]==0 &&els[1][1]==0)
@@ -46,11 +46,11 @@ void proxy(){
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && pMode>=7){
+    else if(LEG==0 && els[0][1]==-100 && pMode>=6){
       els[0][1] = 0;
       getangle(0);
     }
-    else if(LEG==1 && els[1][1]==-100 && pMode>=7){
+    else if(LEG==1 && els[1][1]==-100 && pMode>=6){
       els[1][1] = 0;
       getangle(1);
     }
@@ -66,9 +66,6 @@ void proxy(){
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode==16 && S==7000){
       alternate();
-      left();
-      Lm[0]=0.65f;
-      Lm[2]=0.65f;
       startC=1;
       baseY = yaw;
       Step=300;

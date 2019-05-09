@@ -31,7 +31,7 @@ const uint16_t downS[4] = {47,49,40,43};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={0,-8,-2,15,-25,13,18,-4};
+const uint16_t offset[8]={-5,-8,-2,15,-25,13,18,-4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -69,18 +69,14 @@ void setup()
   pinmode();
 //  test();
 //  staticG();
-  alternate();
 //  left();
+  alternate();
   initial();
-////  rightEx();
-////  dune();
-//  {//start from above mountain
-//    els[0][1]=-100;
-//    els[1][1]=-100;
-//  }
+//  rightEx();
+//  dune();
   getangle(4);
   initial();
-////  delay(2000);
+//  delay(2000);
 //  while(digitalRead(9))
 //  {
 //    checkMPU();
@@ -90,12 +86,14 @@ void setup()
   gobi  = true;
   while(digitalRead(fp));
   while(digitalRead(rp));
+  els[0][1]=0;
+  els[1][1]=0;
   delay(300);
 }
 int timen=0,timep=0;
-void loop()
+void loop()//36 switch 37,38,39 push
 {
-  timen=millis();
+//  timen=millis();
 //  if(timen-timep>50)
 //  {
 //    Serial.println(Step);
@@ -104,8 +102,8 @@ void loop()
 //  }
 //  stepCount();
   RUN(0);
-  proxy();
-//  duneMode();
+//  proxy();
+  duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

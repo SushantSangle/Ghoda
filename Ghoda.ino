@@ -8,7 +8,7 @@ int S = 2;
 //-----------PROXY---------------
 bool pr,pf;
 int pMode=0,pMode1=0;
-int fp=A1;
+int fp=A2;
 int rp=A0;
 //-------------------------------
 
@@ -31,7 +31,7 @@ const uint16_t downS[4] = {47,49,40,43};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-6,-8,-2,15,-23,15,18,-4};
+const uint16_t offset[8]={0,-8,-2,15,-25,13,18,-4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -74,6 +74,10 @@ void setup()
   initial();
 ////  rightEx();
 ////  dune();
+//  {//start from above mountain
+//    els[0][1]=-100;
+//    els[1][1]=-100;
+//  }
   getangle(4);
   initial();
 ////  delay(2000);
@@ -82,26 +86,26 @@ void setup()
 //    checkMPU();
 //  }
 //  baseY = yaw;
-//  q=true;
+  q=true;
   gobi  = true;
   while(digitalRead(fp));
   while(digitalRead(rp));
   delay(300);
-  q=true;
 }
 int timen=0,timep=0;
 void loop()
 {
   timen=millis();
-  if(timen-timep>50)
-  {
-    Serial.println(Step);
-    checkMPU();
-    timep=timen;
-  }
+//  if(timen-timep>50)
+//  {
+//    Serial.println(Step);
+//    checkMPU();
+//    timep=timen;
+//  }
 //  stepCount();
   RUN(0);
   proxy();
+//  duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

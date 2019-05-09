@@ -109,3 +109,21 @@ void pausePlay(){
   RUN(runMode);
   pstate=digitalRead(3);
 }
+void duneMode(){
+  switch(Step)
+  {
+    case 3 ... 4: dune();
+                  getangle(4);
+                  Step=100;
+                  break;
+    case 124:    staticG();
+                  getangle(4);
+                  Step=200;
+                  break;
+    case 201  :   initial();
+                 Step=300;
+                 break;
+    case 301 :   initial();
+                 break;
+  }
+}

@@ -1,10 +1,16 @@
 /*-----------------------MPU-check----------------------*/
+void MPU(){
+  timen=millis();
+  if(timen-timep>50)
+  {
+    Serial.println(Step);
+    checkMPU();
+    timep=timen;
+  }
+}
 void checkMPU(){
   if(Serial3.available()){
     while(Serial3.read()!='H');
-//    yaw2  = ypr1[0] | (ypr1[1]<<8);
-//    pitch2= ypr1[4] | (ypr1[5]<<8);
-//    roll2 = ypr1[2] | (ypr1[3]<<8);
     yaw2  = Serial3.parseInt();
     pitch2= Serial3.parseInt();
     roll2 = Serial3.parseInt();

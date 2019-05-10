@@ -57,13 +57,13 @@ void proxy(){
       pMode = 6;
     }
     //raise both legs up if pitch drops
-    if((els[0][1]==-100 || els[1][1]==-100) && roll<-6)
-    {
-      els[1][1]=0;
-      els[0][1]=0;
-      getangle(1);
-      getangle(0);
-    }
+//    if((els[0][1]==-100 || els[1][1]==-100) && roll<-6)
+//    {
+//      els[1][1]=0;
+//      els[0][1]=0;
+//      getangle(1);
+//      getangle(0);
+//    }
 
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode==16 && S==7000){
@@ -74,25 +74,18 @@ void proxy(){
       pMode=1000;
       getangle(4);
     }
-//    else if(steps>=126 && steps<=130)
-//    {
-//      staticG();
-//      getangle(4);
-//      steps=200;
-//    }
   }
 }
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  if(Step==11){
-//    leftEx();
-//    getangle(4);
+  if(Step==13){
+    leftEx();
+    getangle(4);
     Step=100;
-//    baseY = yaw;
   }
-  else if(Step>11 && Step<200){
-    if((diff>150 && diff<315) || idiff>45 || Step>103){
+  else if(Step>100 && Step<200){
+    if((diff>150 && diff<315) || idiff>45 || Step>106){
       gobi=true;
       alternate();
       left();
@@ -100,15 +93,15 @@ void stepCount(){
       Step=200;
     }
   }
-  else if(Step<400 && Step>302){
+  else if(Step<400 && Step>305){
     initial();
     rightEx();
     getangle(4);
     Step=400;
   }
   else if(Step>399 && Step<500){
-//    if(diff>40 || (idiff>150 && idiff<320) || Step>411)
-    if(Step>41)
+    if(diff>35 || (idiff>150 && idiff<320) || Step>405)
+//    if(Step>41)
     {
 //      right();
       staticG();

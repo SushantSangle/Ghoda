@@ -1,5 +1,5 @@
 #include "stdInc.h"
-
+//36 switch 37,38,39 push
 Servo up[4],down[4];      //SERVO
 Servo UK;
 
@@ -20,10 +20,11 @@ float yp=0,pp=0,rpr=0;
 char ypr1[6];
 int baseY=0;
 bool q=0;
-
+int timen=0,timep=0;
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
+
 const uint16_t upS[4]   = {46,48,41,42};  
 //{38,22,26,40}  
 const uint16_t downS[4] = {47,49,40,43}; 
@@ -31,7 +32,7 @@ const uint16_t downS[4] = {47,49,40,43};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-5,-8,-2,15,-25,13,18,-4};
+const uint16_t offset[8]={-3,-13,-2,15,-6,15,18,-4};
 /*------------------------------------------------*/
 
 /*---------------------MULTIPLIERS----------------*/
@@ -67,38 +68,30 @@ bool gobi=0;
 void setup()
 {
   pinmode();
-//  test();
+  
+  /*walking modes*/{
 //  staticG();
-  alternate();
-  left();
-  initial();
-//  rightEx();
-//  dune();
-  getangle(4);
-  initial();
-//  delay(2000);
-//  while(digitalRead(9))
-//  {
+//  test();
+    alternate();
+    left();
+  }
+  /*INITIAL*/{
+    initial();
+    getangle(4);
+    initial();
+  }
+  while(digitalRead(fp)){
 //    checkMPU();
-//  }
-//  baseY = yaw;
-//  q=true;
-//  gobi  = true;
-  while(digitalRead(fp));
-  while(digitalRead(rp));
+  }
+  q=true;
   delay(300);
+  baseY = yaw;
 }
-int timen=0,timep=0;
-void loop()//36 switch 37,38,39 push
+
+void loop()
 {
-//  timen=millis();
-//  if(timen-timep>50)
-//  {
-//    Serial.println(Step);
-//    checkMPU();
-//    timep=timen;
-//  }
   stepCount();
+  MPU();
   RUN(0);
   proxy();
 //  duneMode();

@@ -2,7 +2,7 @@
 //36 switch 37,38,39 push
 Servo up[4],down[4];      //SERVO
 Servo UK;
-
+//use time limit in while for input form mpu
 //time interval
 int S = 2;
 //-----------PROXY---------------
@@ -68,30 +68,35 @@ bool gobi=0;
 void setup()
 {
   pinmode();
+  UK.write(40);
+  delay(2000);
+  for(int o=40;o<125;o++){
+      UK.write(o);
+      delay(30);
+  }
   
   /*walking modes*/{
 //  staticG();
-  test();
-//    alternate();
-//    left();
+//  test();
+    alternate();
+    left();
   }
   /*INITIAL*/{
-//    initial();
-//    getangle(4);
-//    initial();
+    initial();
+    getangle(4);
+    initial();
   }
   while(digitalRead(fp)){
-//    checkMPU();
+    checkMPU();
   }
   q=true;
   delay(300);
   baseY = yaw;
-  UK.write(30);
 }
 
 void loop()
 {
-//  stepCou0nt();
+//  stepCount();
 //  MPU();
 //  RUN(0);
 //  proxy();

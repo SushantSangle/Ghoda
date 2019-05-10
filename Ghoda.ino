@@ -29,12 +29,12 @@ const uint16_t upS[4]   = {46,48,41,42};
 //{38,22,26,40}  
 const uint16_t downS[4] = {47,49,40,43}; 
 //{34,28,24,36}
+const uint16_t UKK = 44;
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-3,-13,-2,15,-6,15,18,-4};
+const uint16_t offset[8]={0,10,-2,15,0,10,18,-4}; //-6,15
 /*------------------------------------------------*/
-
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
 float Lm[4];
@@ -71,14 +71,14 @@ void setup()
   
   /*walking modes*/{
 //  staticG();
-//  test();
-    alternate();
-    left();
+  test();
+//    alternate();
+//    left();
   }
   /*INITIAL*/{
-    initial();
-    getangle(4);
-    initial();
+//    initial();
+//    getangle(4);
+//    initial();
   }
   while(digitalRead(fp)){
 //    checkMPU();
@@ -86,14 +86,15 @@ void setup()
   q=true;
   delay(300);
   baseY = yaw;
+  UK.write(30);
 }
 
 void loop()
 {
-  stepCount();
-  MPU();
-  RUN(0);
-  proxy();
+//  stepCou0nt();
+//  MPU();
+//  RUN(0);
+//  proxy();
 //  duneMode();
 }
 

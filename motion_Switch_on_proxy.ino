@@ -79,7 +79,7 @@ void proxy(){
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  if(Step==13){
+  if(Step==15){
     leftEx();
     getangle(4);
     Step=100;

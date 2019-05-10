@@ -69,8 +69,8 @@ void setup()
   pinmode();
 //  test();
 //  staticG();
-//  left();
   alternate();
+  left();
   initial();
 //  rightEx();
 //  dune();
@@ -82,12 +82,10 @@ void setup()
 //    checkMPU();
 //  }
 //  baseY = yaw;
-  q=true;
-  gobi  = true;
+//  q=true;
+//  gobi  = true;
   while(digitalRead(fp));
   while(digitalRead(rp));
-  els[0][1]=0;
-  els[1][1]=0;
   delay(300);
 }
 int timen=0,timep=0;
@@ -100,10 +98,10 @@ void loop()//36 switch 37,38,39 push
 //    checkMPU();
 //    timep=timen;
 //  }
-//  stepCount();
+  stepCount();
   RUN(0);
-//  proxy();
-  duneMode();
+  proxy();
+//  duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

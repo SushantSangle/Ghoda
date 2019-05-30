@@ -1,8 +1,9 @@
 /*------------------------------------------------*/
 void alternate(){
+  float ptm = (l1+l2)/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = pta[i][j];
+    for(int j=0;j<2;j++) pt[i][j] = pta[i][j]*ptm;
   }
   mode = 0;
   Hm[0]= 0.7f;
@@ -27,9 +28,10 @@ void alternate(){
 
 /*------------------------------------------------*/
 void staticG(){
+  float ptm = (l1+l2)/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = pt1[i][j];
+    for(int j=0;j<2;j++) pt[i][j] = pt1[i][j] * ptm;
   }  
   mode = 1;
   Hm[0]= 1.5f;

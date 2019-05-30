@@ -69,12 +69,6 @@ void setup()
 {
   pinmode();
   UK.write(40);
-  delay(2000);
-  for(int o=40;o<125;o++){
-      UK.write(o);
-      delay(30);
-  }
-  
   /*walking modes*/{
 //  staticG();
 //  test();

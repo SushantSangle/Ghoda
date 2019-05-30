@@ -88,4 +88,3 @@ void Raise()
   els[3][1] = -100;
   getangle(4);
 }
-

@@ -1,4 +1,5 @@
 #include "stdInc.h"
+
 double TAN(int deg){
     deg = deg % 180 ;
     if(deg==90) return 10E6;

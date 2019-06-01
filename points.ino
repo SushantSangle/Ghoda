@@ -1,19 +1,19 @@
 /*------------------------------------------------*/
-void alternate(){
-  float ptm = (l1+l2)/490;
+void alternate(){  
+  double ptm = (double(l1)+double(l2))/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = pta[i][j]*ptm;
+    for(int j=0;j<2;j++) pt[i][j] = (pta[i][j]*ptm);
   }
   mode = 0;
-  Hm[0]= 0.7f;
-  Hm[1]= 0.7f;
-  Hm[2]= 0.7f;
-  Hm[3]= 0.7f;
-  Lm[0]= 0.8f;
-  Lm[1]= 0.8f;
-  Lm[2]= 0.8f;
-  Lm[3]= 0.8f;
+  Hm[0]= 0.8f;
+  Hm[1]= 0.8f;
+  Hm[2]= 0.8f;
+  Hm[3]= 0.8f;
+  Lm[0]= 0.90f;
+  Lm[1]= 0.90f;
+  Lm[2]= 0.90f;
+  Lm[3]= 0.90f;
   els[0][0] = 0;
   els[0][1] = 0;
   els[1][0] = 0;
@@ -28,10 +28,10 @@ void alternate(){
 
 /*------------------------------------------------*/
 void staticG(){
-  float ptm = (l1+l2)/490;
+  double ptm = (double(l1)+double(l2))/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = pt1[i][j] * ptm;
+    for(int j=0;j<2;j++) pt[i][j] = (pt1[i][j]*ptm);
   }  
   mode = 1;
   Hm[0]= 1.5f;

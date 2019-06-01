@@ -46,15 +46,15 @@ void proxy(){
     }
 
     //Increasing height of leg after
-    else if(LEG==0 && els[0][1]==-100 && (pMode>=6 || (pr&&pf &&pMode>3)) ){
+    else if(LEG==0 && els[0][1]==-100 && (pMode>=8 || (pr&&pf &&pMode>3)) ){
       els[0][1] = 0;
       getangle(0);
-      pMode = 6;
+      pMode = 8;
     }
-    else if(LEG==1 && els[1][1]==-100 && (pMode>=6 || (pr&&pf && pMode>3)) ){
+    else if(LEG==1 && els[1][1]==-100 && (pMode>=8 || (pr&&pf && pMode>3)) ){
       els[1][1] = 0;
       getangle(1);
-      pMode = 6;
+      pMode = 8;
     }
     //raise both legs up if pitch drops
 //    if((els[0][1]==-100 || els[1][1]==-100) && roll<-6)

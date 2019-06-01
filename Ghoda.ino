@@ -33,7 +33,7 @@ const uint16_t UKK = 44;
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={0,10,-2,15,0,10,18,-4}; //-6,15
+const uint16_t offset[8]={-4,1,-2,5,0,13,-10,6}; //-6,15
 /*------------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -44,7 +44,7 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,430};      //elbow co-ordinates
+const int elb[2]={0,415};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG; 
@@ -68,32 +68,36 @@ bool gobi=0;
 void setup()
 {
   pinmode();
-  UK.write(40);
+//  UK.write(40);
   /*walking modes*/{
 //  staticG();
 //  test();
     alternate();
-    left();
+//    left();
   }
   /*INITIAL*/{
     initial();
     getangle(4);
     initial();
   }
-  while(digitalRead(fp)){
-    checkMPU();
-  }
+//  delay(3000);
+  Serial.println("RUN START");
+  while(digitalRead(fp));
+  while(digitalRead(rp));
+  delay(400);
   q=true;
-  delay(300);
+  gobi = true;
   baseY = yaw;
 }
 
 void loop()
 {
+  
+  Serial.println("IN LOOP");
 //  stepCount();
 //  MPU();
-//  RUN(0);
-//  proxy();
+  RUN(0);
+  proxy();
 //  duneMode();
 }
 

@@ -7,10 +7,11 @@ Servo UK;
 int S = 2;
 int b11=0,b=0;
 //-----------PROXY---------------
-bool pr,pf;
+bool pr,pf,pR;
 int pMode=0,pMode1=0;
 int fp=A2;
 int rp=A0;
+int RP=A1;
 //-------------------------------
 
 //----------FOR_MPU--------------
@@ -71,13 +72,13 @@ void setup()
   pinmode();
 
 //  staticG();
-//  test();
+  test();
   alternate();
 //  left();
 
-  initial();
-  getangle(4);
-  initial();
+//  initial();
+//  getangle(4);
+//  initial();
   
   Serial.println("RUN START");
   while(digitalRead(fp));
@@ -95,8 +96,8 @@ void loop()
   Serial.println("IN LOOP");
 //  stepCount();
 //  MPU();
-  RUN(0);
-  proxy();
+//  RUN(0);
+//  proxy();
 //  duneMode();
 }
 

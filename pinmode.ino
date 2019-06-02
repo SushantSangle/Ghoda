@@ -2,6 +2,7 @@ void pinmode()
 {
   pinMode(fp,INPUT);
   pinMode(rp,INPUT);
+  pinMode(RP,INPUT);
   pinMode(9,INPUT);
   
   Serial3.begin(38400);

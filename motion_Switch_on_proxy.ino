@@ -1,3 +1,4 @@
+int hval=-90;
 void proxy(){
   pf = digitalRead(fp);
   pr = digitalRead(rp);
@@ -13,47 +14,48 @@ void proxy(){
     Hm[1]=1.5;
     pMode=1;
   }
-  if( !(i%18) && gobi){
-    if(LEGP==0 && els[0][1]==-100 && (pMode>=5 || (pf&&pr && pMode>=4)) ){
-      els[0][1] = 0;
-      Hm[0] = 0.5;
-      Lm[0] = 0.7;
-      getangle(0);
-      pMode = 5;
-    }
-    else if(LEGP==1 && els[1][1]==-100 && (pMode>=5 || (pf&&pr && pMode>=4)) ){
-      els[1][1] = 0;
-      Hm[1] = 0.5;
-      Lm[1] = 0.7;
-      getangle(1);
-      pMode = 5;
-    }
-  }
-  else if( !(i-9)%18 && gobi)
-  {
-    if(els[0][1]== -100 && els[1][1]== -100) 
-      pMode++;
-    else if(els[0][1]==0 && els[1][1]==0 && pMode>=5)      
-      pMode++;
+  
 
-    if(pMode==1){       //INTITAL SWITCH OF LEGS
+  if( !((i-9)%18) && gobi)
+  {
+    if(els[0][1]== hval && els[1][1]== hval)               pMode++;
+    else if(els[0][1]==0 && els[1][1]==0 && pMode>=6)      pMode++;
+    
+    //INTITAL SWITCH OF LEGS  
+    if(pMode==1){       
       if(LEG==1 && els[1][1]==0)
       {
-        els[1][1]= -100;
+        els[1][1]= hval;
         Hm[1]=1.5f;
         Lm[1]=1.2f;
         getangle(1);
       }
       else if(LEG==0 && els[0][1]==0)
       {
-        els[0][1]= -100;
+        els[0][1]= hval;
         Hm[0]=1.5f;
         Lm[0]=1.2f;
         getangle(0);
       }
     }
+//    else if( pMode>6 ){
+//      if(LEG == 2 && els[2][1]==0){
+//        els[2][1]= hval;
+//        Hm[2]=1.5f;
+//        Lm[2]=1.2f;
+//        getangle(2);
+//      }
+//      if(LEG == 3 && els[3][1]==0){
+//        els[3][1]= hval;
+//        Hm[3]=1.5f;
+//        Lm[3]=1.2f;
+//        getangle(2);
+//      }
+//    }
+
+    //Increasing height of leg after
     //switch to alternate pMode
-    else if(els[1][1]==0 && els[0][1]==0 && pMode==16 && S==7000){
+    else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==35){
       alternate();
       startC=1;
       baseY = yaw;
@@ -62,8 +64,34 @@ void proxy(){
       getangle(4);
     }
   }
+  if(!(i%18)){
+    if(LEGP==0 && els[0][1]==hval && (pMode>=6 || (pr&&pf && pMode>4) ) ){
+      els[0][1] = 0;
+      Hm[0] = 0.6;
+      Lm[0] = 0.7;
+      getangle(0);
+      pMode = 6;
+    }
+    else if(LEGP==1 && els[1][1]==hval && (pMode>=6 || (pr&&pf && pMode>4) ) ){
+      els[1][1] = 0;
+      Hm[1] = 0.6;
+      Lm[1] = 0.7;
+      getangle(1);
+      pMode = 6;
+    }
+//    else if(LEGP==2 && els[2][1]==hval && (pMode>=12 || (pR && pMode>10) ) ){
+//      els[2][1] = 0;
+//      Hm[2] = 0.7;
+//      Lm[2] = 1.0;
+//      getangle(2);
+//    }else if(LEGP==3 && els[3][1]==hval && (pMode>=12 || (pR && pMode>10) ) ){
+//      els[3][1] = 0;
+//      Hm[3] = 0.7;
+//      Lm[3] = 1.0;
+//      getangle(3);
+//    }
+  }
 }
-
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;

@@ -62,7 +62,7 @@ void phaseAngle(int leg,int p,int dir=0){
       case 3: LEG = 3; break;
     }
   }
-  if(p==52){
+  if(p==54){
     switch(leg)
     {
       case 0: LEGP = 0; break;
@@ -71,6 +71,7 @@ void phaseAngle(int leg,int p,int dir=0){
       case 3: LEGP = 3; break;
     }
   }
+  else if((i%18))  LEGP=10;
   usWrite(leg,Angle[leg][p][0]);
   dsWrite(leg,Angle[leg][p][1]);
 }

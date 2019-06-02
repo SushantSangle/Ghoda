@@ -5,6 +5,7 @@ Servo UK;
 //use time limit in while for input form mpu
 //time interval
 int S = 2;
+int b11=0,b=0;
 //-----------PROXY---------------
 bool pr,pf;
 int pMode=0,pMode1=0;
@@ -33,7 +34,7 @@ const uint16_t UKK = 44;
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-4,1,-2,5,0,13,-10,6}; //-6,15
+const uint16_t offset[8]={-4,1,-2,3,0,13,-10,6}; 
 /*------------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -44,10 +45,10 @@ int m;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,415};      //elbow co-ordinates
+const int elb[2]={0,400};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
-int LEG; 
+int LEG,LEGP; 
 double xpriv[4]= {0,0,0,0};
 double xnow[4] = {0,0,0,0};
 /*------------------------------------------------*/
@@ -68,23 +69,21 @@ bool gobi=0;
 void setup()
 {
   pinmode();
-//  UK.write(40);
-  /*walking modes*/{
+
 //  staticG();
 //  test();
-    alternate();
-//    left();
-  }
-  /*INITIAL*/{
-    initial();
-    getangle(4);
-    initial();
-  }
-//  delay(3000);
+  alternate();
+//  left();
+
+  initial();
+  getangle(4);
+  initial();
+  
   Serial.println("RUN START");
   while(digitalRead(fp));
   while(digitalRead(rp));
   delay(400);
+
   q=true;
   gobi = true;
   baseY = yaw;

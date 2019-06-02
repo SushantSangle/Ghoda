@@ -3,17 +3,17 @@ void alternate(){
   double ptm = (double(l1)+double(l2))/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = (pta[i][j]*ptm);
+    for(int j=0;j<2;j++) pt[i][j] = (ptz[i][j]*ptm);
   }
   mode = 0;
   Hm[0]= 0.8f;
   Hm[1]= 0.8f;
   Hm[2]= 0.8f;
   Hm[3]= 0.8f;
-  Lm[0]= 0.90f;
-  Lm[1]= 0.90f;
-  Lm[2]= 0.90f;
-  Lm[3]= 0.90f;
+  Lm[0]= 0.70f;
+  Lm[1]= 0.70f;
+  Lm[2]= 0.70f;
+  Lm[3]= 0.70f;
   els[0][0] = 0;
   els[0][1] = 0;
   els[1][0] = 0;
@@ -22,7 +22,7 @@ void alternate(){
   els[2][1] = 0;
   els[3][0] = 0;
   els[3][1] = 0; 
-  S=1500; 
+  S=12; 
 }
 /*------------------------------------------------*/
 
@@ -50,11 +50,11 @@ void staticG(){
   els[2][1] = 0;
   els[3][0] = 0;
   els[3][1] = 0;
-  S=7000;
+  S=35;
 }
 void dune(){
   alternate();
-  S=3500;
+  S=4;
   Hm[0]= 1.2f;
   Hm[1]= 1.2f;
   Hm[2]= 1.2f;

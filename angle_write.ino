@@ -51,8 +51,8 @@ void getangle(int leg){
 
 /*-----------------------PHASE--------------------*/
 void phaseAngle(int leg,int p,int dir=0){
-  p=p%360;
-  if(p==134){
+  p=p%72;
+  if(p==26){
     if(startC)  steps++; //for counting steps
     switch(leg)
     {
@@ -62,8 +62,15 @@ void phaseAngle(int leg,int p,int dir=0){
       case 3: LEG = 3; break;
     }
   }
-  p=p/5;
-  constrain(p,0,71);
+  if(p==52){
+    switch(leg)
+    {
+      case 0: LEGP = 0; break;
+      case 1: LEGP = 1; break;
+      case 2: LEGP = 2; break;
+      case 3: LEGP = 3; break;
+    }
+  }
   usWrite(leg,Angle[leg][p][0]);
   dsWrite(leg,Angle[leg][p][1]);
 }

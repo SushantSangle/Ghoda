@@ -2,25 +2,25 @@
 void RUN(int p){
     if(!p){ 
       i++; 
-      i=i%360;
+      i=i%72;
       Step+=(i==1?1:0);   
     }
     switch(mode)
     {
       case 0:
         phaseAngle(0,i+0,0);
-        phaseAngle(1,i+180,0);
-        phaseAngle(2,i+180,0);
+        phaseAngle(1,i+36,0);
+        phaseAngle(2,i+36,0);
         phaseAngle(3,i+0,0);
         break;
       case 1:
-        phaseAngle(0,i+0,0);
-        phaseAngle(1,i+180,0);
-        phaseAngle(2,i+90,0);
-        phaseAngle(3,i+270,0);
+        phaseAngle(0,i+00,0);
+        phaseAngle(1,i+36,0);
+        phaseAngle(2,i+18,0);
+        phaseAngle(3,i+54,0);
         break;
     }
-    delayMicroseconds(S);
+    delay(S);
 }
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
@@ -28,7 +28,7 @@ void shift(){
 //    if(roll  < -6   && els[3][1]< 0 && els[1][1]==0 ) stand();
 //-ve -> / and +ve -> \0
 //  if(roll  >  7   && els[3][1]==0 && els[0][1]==0 ) Raise();
-  if((i-46)%90==0)
+  if((i-9)%18==0)
   {
     int Sh = 40;
     switch(LEG){

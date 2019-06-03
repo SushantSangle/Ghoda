@@ -27,15 +27,15 @@ int timen=0,timep=0;
 
 /*-------------------PINS-------------------------*/
 
-const uint16_t upS[4]   = {46,48,41,42};  
+const uint16_t upS[4]   = {49,42,47,40};  
 //{38,22,26,40}  
-const uint16_t downS[4] = {47,49,40,43}; 
+const uint16_t downS[4] = {48,43,46,41}; 
 //{34,28,24,36}
 const uint16_t UKK = 44;
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-4,1,-2,3,0,13,-10,6}; 
+const uint16_t offset[8]={-5,2,12,-4,0,13,-3,6}; 
 /*------------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -73,7 +73,7 @@ void setup()
 
 //  staticG();
   test();
-  alternate();
+//  alternate();
 //  left();
 
 //  initial();
@@ -92,8 +92,6 @@ void setup()
 
 void loop()
 {
-  
-  Serial.println("IN LOOP");
 //  stepCount();
 //  MPU();
 //  RUN(0);

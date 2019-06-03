@@ -38,21 +38,6 @@ void proxy(){
         getangle(0);
       }
     }
-//    else if( pMode>6 ){
-//      if(LEG == 2 && els[2][1]==0){
-//        els[2][1]= hval;
-//        Hm[2]=1.5f;
-//        Lm[2]=1.2f;
-//        getangle(2);
-//      }
-//      if(LEG == 3 && els[3][1]==0){
-//        els[3][1]= hval;
-//        Hm[3]=1.5f;
-//        Lm[3]=1.2f;
-//        getangle(2);
-//      }
-//    }
-
     //Increasing height of leg after
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==35){
@@ -79,36 +64,26 @@ void proxy(){
       getangle(1);
       pMode = 6;
     }
-//    else if(LEGP==2 && els[2][1]==hval && (pMode>=12 || (pR && pMode>10) ) ){
-//      els[2][1] = 0;
-//      Hm[2] = 0.7;
-//      Lm[2] = 1.0;
-//      getangle(2);
-//    }else if(LEGP==3 && els[3][1]==hval && (pMode>=12 || (pR && pMode>10) ) ){
-//      els[3][1] = 0;
-//      Hm[3] = 0.7;
-//      Lm[3] = 1.0;
-//      getangle(3);
-//    }
   }
 }
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  if(Step==18){
-    leftEx();
+  if(Step==12){
+//    leftEx();
     getangle(4);
-    Step=100;
+    Step=200;
+    gobi = true;
   }
-  else if(Step>100 && Step<200){
-    if((diff>150 && diff<315) || idiff>45 || Step>106){
-      gobi=true;
-      alternate();
-      left();
-      getangle(4);
-      Step=200;
-    }
-  }
+//  else if(Step>100 && Step<200){
+//    if((diff>150 && diff<315) || idiff>45 || Step>106){
+//      gobi=true;
+//      alternate();
+//      left();
+//      getangle(4);
+//      Step=200;
+//    }
+//  }
   else if(Step<400 && Step>305){
     initial();
     rightEx();

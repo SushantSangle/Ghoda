@@ -3,7 +3,7 @@ void alternate(){
   double ptm = (double(l1)+double(l2))/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = (ptz[i][j]*ptm);
+    for(int j=0;j<2;j++) pt[i][j] = (pta[i][j]*ptm);
   }
   mode = 0;
   Hm[0]= 0.8f;
@@ -22,7 +22,7 @@ void alternate(){
   els[2][1] = 0;
   els[3][0] = 0;
   els[3][1] = 0; 
-  S=12; 
+  S=10; 
 }
 /*------------------------------------------------*/
 

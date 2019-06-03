@@ -46,7 +46,7 @@ void proxy(){
     }
     
     //switch to alternate pMode
-    else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==35){
+    else if(els[1][1]==0 && els[0][1]==0 && pMode>=16 && S==35 && pMode<500){
       alternate();
       startC=1;
       baseY = yaw;
@@ -60,7 +60,7 @@ void proxy(){
   if(!(i%18)&& I_increment){
     if(LEGP==0 && els[0][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
       els[0][1] = 0;
-      Hm[0] = 1.0;
+      Hm[0] = 0.8;
       Lm[0] = 1.0;
       getangle(0);
       pMode = 6;
@@ -68,7 +68,7 @@ void proxy(){
     }
     else if(LEGP==1 && els[1][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
       els[1][1] = 0;
-      Hm[1] = 1.0;
+      Hm[1] = 0.8;
       Lm[1] = 1.0;
       getangle(1);
       pMode = 6;
@@ -77,35 +77,26 @@ void proxy(){
   }
 }
 void stepCount(){
-  Serial.println("7");
   int diff = baseY-yaw;
   int idiff = diff*-1;
   if(Step==12){
+    Serial.println("9");
 //    leftEx();
     getangle(4);
     Step=200;
     gobi = true;
   }
-//  else if(Step>100 && Step<200){
-//    if((diff>150 && diff<315) || idiff>45 || Step>106){
-//      gobi=true;
-//      alternate();
-//      left();
-//      getangle(4);
-//      Step=200;
-//    }
-//  }
-  else if(Step<400 && Step>305){
+  else if(Step<400 && Step>304){
+    Serial.println("10");
     initial();
     rightEx();
     getangle(4);
     Step=400;
   }
   else if(Step>399 && Step<500){
-    if(diff>35 || (idiff>150 && idiff<320) || Step>405)
-//    if(Step>41)
+    if(diff>35 || (idiff>150 && idiff<320) || Step>406)
     {
-//      right();
+      Serial.println("11");
       staticG();
       Hm[0] = 1.7;
       Hm[1] = 1.7;

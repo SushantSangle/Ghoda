@@ -1,9 +1,9 @@
 void left()
 {
-  Lm[0]=0.62f;
-  Lm[2]=0.62f;
-  Lm[1]=0.9f;
-  Lm[3]=0.9f;
+  Lm[0]=0.60f;
+  Lm[2]=0.60f;
+  Lm[1]=1.0f;
+  Lm[3]=1.0f;
 }
 void right()
 {
@@ -29,14 +29,23 @@ void leftEx()
 //  Hm[2]=0.0f;
   Lm[1]=0.9f;
   Lm[3]=0.9f;
+  pDiff[0] = 0;
+  pDiff[1] = 36;
+  pDiff[2] = 41;
+  pDiff[3] = 6;
 }
 
 void rightEx()
 {
-  Lm[0]=0.9f;
-  Lm[2]=0.9f;
-  Lm[1]=-0.1f;
-  Lm[3]=-0.1f;
+  Lm[0]=1.1f;
+  Lm[2]=1.1f;
+  Lm[1]=-0.2f;
+  Lm[3]=-0.2f;
+  
+  pDiff[0] = 0;
+  pDiff[1] = 36;
+  pDiff[2] = 41;
+  pDiff[3] = 6;
 }
 
 void turn(bool arena) //0 for left 1 for right

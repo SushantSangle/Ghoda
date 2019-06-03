@@ -11,21 +11,11 @@ void RUN(int p){
       i=i%72;
       Step+=(i==1?1:0);   
     }
-    switch(mode)
-    {
-      case 0:
-        phaseAngle(0,i+0,0);
-        phaseAngle(1,i+36,0);
-        phaseAngle(2,i+36,0);
-        phaseAngle(3,i+0,0);
-        break;
-      case 1:
-        phaseAngle(0,i+00,0);
-        phaseAngle(1,i+36,0);
-        phaseAngle(2,i+18,0);
-        phaseAngle(3,i+54,0);
-        break;
-    }
+    phaseAngle(0,i+pDiff[0],0);
+    phaseAngle(1,i+pDiff[1],0);
+    phaseAngle(2,i+pDiff[2],0);
+    phaseAngle(3,i+pDiff[3],0);
+
     tp_run = tn_run;
   }
 }
@@ -119,18 +109,18 @@ void pausePlay(){
 void duneMode(){
   switch(Step)
   {
-    case 3 ... 4: dune();
+    case 2003 ... 2004: dune();
                   getangle(4);
-                  Step=100;
+                  Step=2100;
                   break;
-    case 124:    staticG();
+    case 2124:    staticG();
                   getangle(4);
-                  Step=200;
+                  Step=2200;
                   break;
-    case 201  :   initial();
-                 Step=300;
+    case 2201  :   initial();
+                 Step=2300;
                  break;
-    case 301 :   initial();
+    case 2301 :   initial();
                  break;
   }
 }

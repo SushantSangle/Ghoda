@@ -4,6 +4,10 @@ Servo up[4],down[4];      //SERVO
 Servo UK;
 //use time limit in while for input form mpu
 //time interval
+//switch(36) left 1 right 0
+//after step(37) 
+//dune(38)
+
 int S = 2;
 int b11=0,b=0;
 //-----------PROXY---------------
@@ -12,6 +16,7 @@ int pMode=0,pMode1=0;
 int fp=A2;
 int rp=A0;
 int RP=A1;
+
 //-------------------------------
 
 //----------FOR_MPU--------------
@@ -23,6 +28,7 @@ char ypr1[6];
 int baseY=0;
 bool q=0;
 int timen=0,timep=0;
+int pDiff[4] = {0,36,36,0};
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
@@ -75,29 +81,32 @@ void setup()
 //  staticG();
 //  test();
   alternate();
-//  left();
-
+  left();
+  
   initial();
   getangle(4);
   initial();
   
   
-  while(digitalRead(fp));
+  while(digitalRead(fp)){
+    if(digitalRead(37))  afterDune();
+    if(digitalRead(39))  test();
+  }
   while(digitalRead(rp));
   delay(400);
   Serial.println("RUN START");
   q=true;
-  gobi = true;
+//  gobi = true;
   baseY = yaw;
 }
-
+bool DUNE= false;
 void loop()
 {
-//  stepCount();
+  stepCount();
 //  MPU();
   RUN(0);
   proxy();
-//  duneMode();
+// duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

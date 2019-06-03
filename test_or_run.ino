@@ -2,8 +2,10 @@
 int tn_run=0,tp_run=0;
 void RUN(int p){
   tn_run = millis();
+  I_increment = false;
   if(tn_run-tp_run>=S)
   {
+    I_increment = true;
     if(!p){ 
       i++; 
       i=i%72;

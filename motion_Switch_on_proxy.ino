@@ -8,15 +8,18 @@ void proxy(){
     Hm[1]=1.0;
     getangle(4);
     pMode1++;
+    Serial.println("1");
   }
   if(!(pr || pMode) && gobi){
     Hm[0]=1.5;
     Hm[1]=1.5;
     pMode=1;
+    
+    Serial.println("2");
   }
   
 
-  if( !((i-9)%18) && gobi)
+  if( !((i-9)%18) && gobi && I_increment)
   {
     if(els[0][1]== hval && els[1][1]== hval)               pMode++;
     else if(els[0][1]==0 && els[1][1]==0 && pMode>=6)      pMode++;
@@ -29,6 +32,8 @@ void proxy(){
         Hm[1]=1.5f;
         Lm[1]=1.2f;
         getangle(1);
+        
+        Serial.println("3");
       }
       else if(LEG==0 && els[0][1]==0)
       {
@@ -36,9 +41,10 @@ void proxy(){
         Hm[0]=1.5f;
         Lm[0]=1.2f;
         getangle(0);
+        Serial.println("4");
       }
     }
-    //Increasing height of leg after
+    
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode==20 && S==35){
       alternate();
@@ -47,26 +53,31 @@ void proxy(){
       Step=300;
       pMode=1000;
       getangle(4);
+      Serial.println("5");
     }
   }
-  if(!(i%18)){
-    if(LEGP==0 && els[0][1]==hval && (pMode>=6 || (pr&&pf && pMode>4) ) ){
+  //Increasing height of leg after
+  if(!(i%18)&& I_increment){
+    if(LEGP==0 && els[0][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
       els[0][1] = 0;
-      Hm[0] = 0.6;
-      Lm[0] = 0.7;
+      Hm[0] = 1.0;
+      Lm[0] = 1.0;
       getangle(0);
       pMode = 6;
+      Serial.println("6");
     }
-    else if(LEGP==1 && els[1][1]==hval && (pMode>=6 || (pr&&pf && pMode>4) ) ){
+    else if(LEGP==1 && els[1][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
       els[1][1] = 0;
-      Hm[1] = 0.6;
-      Lm[1] = 0.7;
+      Hm[1] = 1.0;
+      Lm[1] = 1.0;
       getangle(1);
       pMode = 6;
+      Serial.println("7");
     }
   }
 }
 void stepCount(){
+  Serial.println("7");
   int diff = baseY-yaw;
   int idiff = diff*-1;
   if(Step==12){

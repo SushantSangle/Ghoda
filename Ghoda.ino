@@ -43,6 +43,7 @@ float Lm[4];
 const int upB[4]=  {1 ,-1 ,-1 ,1  };
 const int downB[4]={1 ,-1 ,-1 ,1  };
 int m;
+bool I_increment = false;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
@@ -72,19 +73,19 @@ void setup()
   pinmode();
 
 //  staticG();
-  test();
-//  alternate();
+//  test();
+  alternate();
 //  left();
 
-//  initial();
-//  getangle(4);
-//  initial();
+  initial();
+  getangle(4);
+  initial();
   
-  Serial.println("RUN START");
+  
   while(digitalRead(fp));
   while(digitalRead(rp));
   delay(400);
-
+  Serial.println("RUN START");
   q=true;
   gobi = true;
   baseY = yaw;
@@ -94,8 +95,8 @@ void loop()
 {
 //  stepCount();
 //  MPU();
-//  RUN(0);
-//  proxy();
+  RUN(0);
+  proxy();
 //  duneMode();
 }
 

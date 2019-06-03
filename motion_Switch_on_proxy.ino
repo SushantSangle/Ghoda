@@ -6,6 +6,8 @@ void proxy(){
     staticG();
     Hm[0]=1.0;
     Hm[1]=1.0;
+    Hm[2]=1.7;
+    Hm[3]=1.7;
     getangle(4);
     pMode1++;
     Serial.println("1");
@@ -86,7 +88,7 @@ void stepCount(){
     Step=200;
     gobi = true;
   }
-  else if(Step<400 && Step>304){
+  else if(Step<400 && Step>303){
     Serial.println("10");
     initial();
     rightEx();
@@ -97,11 +99,16 @@ void stepCount(){
     if(diff>35 || (idiff>150 && idiff<320) || Step>406)
     {
       Serial.println("11");
-      staticG();
+      alternate();
+      S=15;
       Hm[0] = 1.7;
       Hm[1] = 1.7;
       Hm[2] = 1.7;
       Hm[3] = 1.7;
+      Lm[0] = 0.9;
+      Lm[1] = 0.9;
+      Lm[2] = 0.9;
+      Lm[3] = 0.9;
       getangle(4);
       Step=500;
     }

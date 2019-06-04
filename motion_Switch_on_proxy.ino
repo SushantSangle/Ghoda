@@ -81,14 +81,14 @@ void proxy(){
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  if(Step==12){
+  if(Step==13){
     Serial.println("9");
 //    leftEx();
     getangle(4);
     Step=200;
     gobi = true;
   }
-  else if(Step<400 && Step>303){
+  else if(Step<400 && Step>304){
     Serial.println("10");
     initial();
     rightEx();
@@ -105,9 +105,9 @@ void stepCount(){
       Hm[1] = 1.7;
       Hm[2] = 1.7;
       Hm[3] = 1.7;
-      Lm[0] = 0.9;
+      Lm[0] = 0.7;
       Lm[1] = 0.9;
-      Lm[2] = 0.9;
+      Lm[2] = 0.7;
       Lm[3] = 0.9;
       getangle(4);
       Step=500;

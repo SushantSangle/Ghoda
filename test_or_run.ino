@@ -75,26 +75,76 @@ void shift(){
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
 void test(){
-  dsWrite(0,90);
-  usWrite(0,90);
-
-  dsWrite(1,90);
-  usWrite(1,90);
-
-  dsWrite(2,90);
-  usWrite(2,90);
-
-  dsWrite(3,90);
-  usWrite(3,90);
-
-//  down[0].write(90);
-//  up[0].write(90);
-//  down[1].write(90);
-//  up[1].write(90);
-//  down[2].write(90);
-//  up[2].write(90);
-//  down[3].write(90);
-//  up[3].write(90);
+  if(digitalRead(36))
+  {
+    down[0].write(90);
+    up[0].write(90);
+    down[1].write(90);
+    up[1].write(90);
+    down[2].write(90);
+    up[2].write(90);
+    down[3].write(90);
+    up[3].write(90);
+  }
+  else{
+    dsWrite(0,90);
+    usWrite(0,90);
+  
+    dsWrite(1,90);
+    usWrite(1,90);
+  
+    dsWrite(2,90);
+    usWrite(2,90);
+  
+    dsWrite(3,90);
+    usWrite(3,90);
+  }
+  bool up_or_down = true;
+  while(1){
+    if(digitalRead(37)){ up_or_down = true;  break;}
+    if(digitalRead(38)){ up_or_down = false; break;}
+  }
+  while(1){
+    if(up_or_down){
+      for(int i=90;i<110;i++)
+      {
+        usWrite(0,i);
+        usWrite(1,i);
+        usWrite(2,i);
+        usWrite(3,i);
+        delay(10);
+      }
+      for(int i=110;i>90;i--)
+      {
+        usWrite(0,i);
+        usWrite(1,i);
+        usWrite(2,i);
+        usWrite(3,i);
+        delay(10);
+      }
+    }
+    else{
+      for(int i=90;i<110;i++)
+      {
+        dsWrite(0,i);
+        dsWrite(1,i);
+        dsWrite(2,i);
+        dsWrite(3,i);
+        delay(10);
+      }
+      for(int i=110;i>90;i--)
+      {
+        dsWrite(0,i);
+        dsWrite(1,i);
+        dsWrite(2,i);
+        dsWrite(3,i);
+        delay(10);
+      }
+      
+    }
+  }
+  
+  while(1);
 }
 /*--------------------------------------------------*/
 void pausePlay(){
@@ -113,7 +163,7 @@ void duneMode(){
                   getangle(4);
                   Step=2100;
                   break;
-    case 2124:    staticG();
+    case 2124:    alternate();
                   getangle(4);
                   Step=2200;
                   break;

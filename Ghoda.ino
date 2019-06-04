@@ -87,13 +87,12 @@ void setup()
   getangle(4);
   initial();
   
-  
-  while(digitalRead(fp)){
+  while(digitalRead(2)){
+    Serial.println(digitalRead(2));
     if(digitalRead(37))  afterDune();
     if(digitalRead(39))  test();
   }
-  while(digitalRead(rp));
-  delay(400);
+  delay(200);
   Serial.println("RUN START");
   q=true;
 //  gobi = true;
@@ -106,7 +105,7 @@ void loop()
 //  MPU();
   RUN(0);
   proxy();
-// duneMode();
+ duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

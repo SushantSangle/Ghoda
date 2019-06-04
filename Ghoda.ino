@@ -90,15 +90,17 @@ void setup()
   
 //  while(digitalRead(2))
   {
-//    ARENA = digitalRead(36);
-//    Serial.println(ARENA);
-//    if(digitalRead(37))  afterDune();
-//    if(digitalRead(39))  test();
+
   }
   ARENA = 0;
   turn(ARENA);
   getangle(4);
-  while(digitalRead(fp));
+  while(digitalRead(fp)){
+    ARENA = digitalRead(36);
+    Serial.println(ARENA);
+    if(digitalRead(37))  afterDune();
+    if(digitalRead(39))  test();
+  }
   while(digitalRead(rp));
   Serial.println("RUN START");
   q=true;

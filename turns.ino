@@ -25,8 +25,6 @@ void leftEx()
 {
   Lm[0]=-0.1f;
   Lm[2]=-0.1f;
-//  Hm[0]=0.0f;
-//  Hm[2]=0.0f;
   Lm[1]=0.9f;
   Lm[3]=0.9f;
   pDiff[0] = 0;
@@ -37,10 +35,10 @@ void leftEx()
 
 void rightEx()
 {
-  Lm[0]=1.1f;
-  Lm[2]=1.1f;
-  Lm[1]=-0.2f;
-  Lm[3]=-0.2f;
+  Lm[0]=1.0f;
+  Lm[2]=1.0f;
+  Lm[1]=-0.1f;
+  Lm[3]=-0.1f;
   
   pDiff[0] = 0;
   pDiff[1] = 36;
@@ -50,11 +48,11 @@ void rightEx()
 
 void turn(bool arena) //0 for left 1 for right
 {
-  if(!arena) left();
+  if(arena) left();
   else      right();
 }
 void turnX(bool arena)
 {
-  if(!arena) rightEx();
+  if(arena) rightEx();
   else        leftEx();
 }

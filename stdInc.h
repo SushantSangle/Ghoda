@@ -1,6 +1,5 @@
 #include <Servo.h>
 #include <math.h>
-
 #ifndef stdinc
 
 #define stdinc
@@ -12,6 +11,8 @@
 #define toD(a) ((a)*pi/180)
 #define s(a) (((a)*(a)))
 #define uk 32
+#define LEFTT 1
+#define RIGHTT 0
 
 const double pta[72][2] ={{0,0},{-4.3,0},{-8.6,0},{-12.9,0},{-21.5,0},{-25.8,0},
 {-30.1,0},{-34.4,0},{-38.7,0},{-43,0},{-47.3,0},{-51.6,0},{-55.9,0},

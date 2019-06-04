@@ -7,7 +7,6 @@ Servo UK;
 //switch(36) left 1 right 0
 //after step(37) 
 //dune(38)
-
 int S = 2;
 int b11=0,b=0;
 //-----------PROXY---------------
@@ -29,6 +28,7 @@ int baseY=0;
 bool q=0;
 int timen=0,timep=0;
 int pDiff[4] = {0,36,36,0};
+int ARENA;
 //-------------------------------
 
 /*-------------------PINS-------------------------*/
@@ -81,7 +81,6 @@ void setup()
 //  staticG();
 //  test();
   alternate();
-  left();
   
   initial();
   getangle(4);
@@ -89,9 +88,13 @@ void setup()
   
   while(digitalRead(2)){
     Serial.println(digitalRead(2));
+    if(digitalRead(36))  ARENA=LEFTT;
+    else                 ARENA=RIGHTT;
     if(digitalRead(37))  afterDune();
     if(digitalRead(39))  test();
   }
+  turn(ARENA);
+  getangle(4);
   delay(200);
   Serial.println("RUN START");
   q=true;

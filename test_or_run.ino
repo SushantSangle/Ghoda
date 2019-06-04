@@ -167,10 +167,14 @@ void duneMode(){
                   getangle(4);
                   Step=2200;
                   break;
-    case 2201  :   initial();
+    case 2201  : initial();
                  Step=2300;
                  break;
-    case 2301 :   initial();
+    case 2301 :  UKKHAI(); 
+                 initial();
                  break;
   }
+}
+void UKKHAI(){
+  
 }

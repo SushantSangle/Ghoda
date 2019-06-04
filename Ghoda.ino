@@ -1,7 +1,9 @@
 #include "stdInc.h"
 //36 switch 37,38,39 push
 Servo up[4],down[4];      //SERVO
-Servo UK;
+int ukkhai_m1 = 6;
+int ukkhai_m2 = 8;
+int ukkhai_pwm = 7;
 //use time limit in while for input form mpu
 //time interval
 //switch(36) left 1 right 0
@@ -81,34 +83,35 @@ void setup()
 //  staticG();
 //  test();
   alternate();
-  
+//  gerejeStop();
   initial();
   getangle(4);
   initial();
   
-  while(digitalRead(2)){
-    Serial.println(digitalRead(2));
-    if(digitalRead(36))  ARENA=LEFTT;
-    else                 ARENA=RIGHTT;
-    if(digitalRead(37))  afterDune();
-    if(digitalRead(39))  test();
+//  while(digitalRead(2))
+  {
+//    ARENA = digitalRead(36);
+//    Serial.println(ARENA);
+//    if(digitalRead(37))  afterDune();
+//    if(digitalRead(39))  test();
   }
+  ARENA = 0;
   turn(ARENA);
   getangle(4);
-  delay(200);
+  while(digitalRead(fp));
+  while(digitalRead(rp));
   Serial.println("RUN START");
   q=true;
-//  gobi = true;
   baseY = yaw;
 }
 bool DUNE= false;
-void loop()
+void loop() 
 {
   stepCount();
 //  MPU();
   RUN(0);
   proxy();
- duneMode();
+// duneMode();
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

@@ -75,6 +75,7 @@ void shift(){
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
 void test(){
+  bool up_or_down = true;
   if(digitalRead(36))
   {
     down[0].write(90);
@@ -100,7 +101,6 @@ void test(){
     usWrite(3,90);
   }
   while(1){
-  bool up_or_down = true;
     if(digitalRead(37)){ up_or_down = true;  break;}
     if(digitalRead(38)){ up_or_down = false; break;}
   }
@@ -176,5 +176,9 @@ void duneMode(){
   }
 }
 void UKKHAI(){
-  
+  digitalWrite(ukkhai_m1,HIGH);
+  digitalWrite(ukkhai_m2,LOW);
+  analogWrite(ukkhai_pwm,200);
+  delay(1000);
+  gerejeStop();
 }

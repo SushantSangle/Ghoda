@@ -99,8 +99,8 @@ void test(){
     dsWrite(3,90);
     usWrite(3,90);
   }
-  bool up_or_down = true;
   while(1){
+  bool up_or_down = true;
     if(digitalRead(37)){ up_or_down = true;  break;}
     if(digitalRead(38)){ up_or_down = false; break;}
   }

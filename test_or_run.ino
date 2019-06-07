@@ -106,7 +106,7 @@ void test(){
   }
   while(1){
     if(up_or_down){
-      for(int i=90;i<110;i++)
+      for(int i=90;i>70;i--)
       {
         usWrite(0,i);
         usWrite(1,i);
@@ -114,7 +114,7 @@ void test(){
         usWrite(3,i);
         delay(10);
       }
-      for(int i=110;i>90;i--)
+      for(int i=70;i<90;i++)
       {
         usWrite(0,i);
         usWrite(1,i);
@@ -176,9 +176,9 @@ void duneMode(){
   }
 }
 void UKKHAI(){
-  digitalWrite(ukkhai_m1,HIGH);
-  digitalWrite(ukkhai_m2,LOW);
-  analogWrite(ukkhai_pwm,200);
-  delay(1000);
+  digitalWrite(ukkhai_m1,LOW);
+  digitalWrite(ukkhai_m2,HIGH);
+  analogWrite(ukkhai_pwm,150);
+  delay(400);
   gerejeStop();
 }

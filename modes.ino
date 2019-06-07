@@ -5,7 +5,7 @@ void afterDune(){
   Step=300;
   pMode=1000;
   getangle(4);
-  Serial.println("5");
+  Serial.println("after step mode");
 }
 void mountain(){
   Step = 2000;

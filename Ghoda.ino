@@ -1,9 +1,9 @@
 #include "stdInc.h"
 //36 switch 37,38,39 push
 Servo up[4],down[4];      //SERVO
-int ukkhai_m1 = 6;
-int ukkhai_m2 = 8;
-int ukkhai_pwm = 7;
+int ukkhai_m1 = 8;
+int ukkhai_m2 = 10;
+int ukkhai_pwm = 9;
 //use time limit in while for input form mpu
 //time interval
 //switch(36) left 1 right 0
@@ -14,8 +14,8 @@ int b11=0,b=0;
 //-----------PROXY---------------
 bool pr,pf,pR;
 int pMode=0,pMode1=0;
-int fp=A2;
-int rp=A0;
+int fp=A0;//A2
+int rp=A2;
 int RP=A1;
 
 //-------------------------------
@@ -35,11 +35,10 @@ int ARENA;
 
 /*-------------------PINS-------------------------*/
 
-const uint16_t upS[4]   = {49,42,47,40};  
-//{38,22,26,40}  
-const uint16_t downS[4] = {48,43,46,41}; 
-//{34,28,24,36}
-const uint16_t UKK = 44;
+const uint16_t upS[4]   = {49,47,40,43};  
+//{38,22,26,40}  {49,42,47,40}
+const uint16_t downS[4] = {48,46,41,42}; 
+//{34,28,24,36}{48,43,46,41}
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
@@ -83,25 +82,21 @@ void setup()
 //  staticG();
 //  test();
   alternate();
-//  gerejeStop();
+  gerejeStop();
   initial();
   getangle(4);
   initial();
   
-//  while(digitalRead(2))
+  while(digitalRead(2))
   {
-
-  }
-  ARENA = 0;
-  turn(ARENA);
-  getangle(4);
-  while(digitalRead(fp)){
     ARENA = digitalRead(36);
     Serial.println(ARENA);
     if(digitalRead(37))  afterDune();
     if(digitalRead(39))  test();
   }
-  while(digitalRead(rp));
+  ARENA = 0;
+  turn(ARENA);
+  getangle(4);
   Serial.println("RUN START");
   q=true;
   baseY = yaw;

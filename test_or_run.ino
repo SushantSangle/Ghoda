@@ -176,9 +176,9 @@ void duneMode(){
   }
 }
 void UKKHAI(){
-  digitalWrite(ukkhai_m1,HIGH);
-  digitalWrite(ukkhai_m2,LOW);
-  analogWrite(ukkhai_pwm,200);
-  delay(1000);
+  digitalWrite(ukkhai_m1,LOW);
+  digitalWrite(ukkhai_m2,HIGH);
+  analogWrite(ukkhai_pwm,150);
+  delay(400);
   gerejeStop();
 }

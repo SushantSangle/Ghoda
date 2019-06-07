@@ -5,9 +5,12 @@ void pinmode()
   pinMode(RP,INPUT);
   pinMode(9,INPUT);
   
-  pinMode(ukkhai_m1,OUTPUT);
+    pinMode(ukkhai_m1,OUTPUT);
   pinMode(ukkhai_m2,OUTPUT);
   pinMode(ukkhai_pwm,OUTPUT);
+  digitalWrite(ukkhai_m1,LOW);
+  digitalWrite(ukkhai_m2,LOW);
+  analogWrite(ukkhai_pwm,0);
   
   Serial3.begin(38400);
   Serial.begin(38400);

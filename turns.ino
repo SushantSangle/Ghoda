@@ -7,8 +7,8 @@ void left()
 }
 void right()
 {
-  Lm[0]=1.0f;
-  Lm[2]=1.0f;
+  Lm[0]=1.05f;
+  Lm[2]=1.05f;
   Lm[1]=0.50f;
   Lm[3]=0.50f;
 }
@@ -18,6 +18,8 @@ void straight()
   Lm[2]=1.0f;
   Lm[3]=1.0f;
   Lm[1]=1.0f;
+  
+
 }
 void leftEx()
 {

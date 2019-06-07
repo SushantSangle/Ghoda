@@ -16,7 +16,7 @@ void proxy(){
     Hm[0]=1.5;
     Hm[1]=1.5;
     pMode=1;
-    getangle(4);
+    
     Serial.println("2");
   }
   
@@ -27,7 +27,7 @@ void proxy(){
     else if(els[0][1]==0 && els[1][1]==0 && pMode>=6)      pMode++;
     
     //INTITAL SWITCH OF LEGS  
-    if(pMode>=1 && pMode<=3){       
+    if(pMode==1){       
       if(LEG==1 && els[1][1]==0)
       {
         els[1][1]= hval;

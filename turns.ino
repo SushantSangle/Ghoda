@@ -7,10 +7,10 @@ void left()
 }
 void right()
 {
-  Lm[0]=1.05f;
-  Lm[2]=1.05f;
-  Lm[1]=0.50f;
-  Lm[3]=0.50f;
+  Lm[0]=1.00f;
+  Lm[2]=1.00f;
+  Lm[1]=0.65f;
+  Lm[3]=0.65f;
 }
 void straight() 
 {
@@ -23,14 +23,21 @@ void straight()
 }
 void leftEx()
 {
-  Lm[0]=-0.1f;
-  Lm[2]=-0.1f;
+  staticG();
+  Lm[0]=-0.35f;
+  Lm[2]=-0.35f;
   Lm[1]=1.0f;
   Lm[3]=1.0f;
-  pDiff[0] = 6;
-  pDiff[1] = 41;
-  pDiff[2] = 36;
-  pDiff[3] = 0;
+  Hm[0]=1.0f;
+  Hm[1]=1.0f;
+  Hm[2]=1.0f;
+  Hm[3]=1.0f;
+  S = 35;
+//  els[2][0] = 50;
+//  pDiff[0] = 0;
+//  pDiff[1] = 36;
+//  pDiff[2] = 41;
+//  pDiff[3] = 6;
 }
 
 void rightEx()

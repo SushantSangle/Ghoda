@@ -42,7 +42,7 @@ const uint16_t downS[4] = {48,46,41,42};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-5,2,12,-4,0,13,-3,6}; 
+const uint16_t offset[8]={-7,2,-1,-10,12,3,-6,6}; 
 /*------------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -94,7 +94,6 @@ void setup()
     if(digitalRead(37))  afterDune();
     if(digitalRead(39))  test();
   }
-  ARENA = 0;
   turn(ARENA);
   getangle(4);
   Serial.println("RUN START");

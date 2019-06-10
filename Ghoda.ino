@@ -42,7 +42,7 @@ const uint16_t downS[4] = {48,46,41,42};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-7,2,-1,-10,12,3,-6,6}; 
+const uint16_t offset[8]={-6,0,0,13,-6,3,-6,14}; 
 /*------------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -54,7 +54,7 @@ bool I_increment = false;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,400};      //elbow co-ordinates
+const int elb[2]={0,430};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG,LEGP; 
@@ -79,7 +79,7 @@ void setup()
 {
   pinmode();
 
-//  staticG();
+  staticG();
 //  test();
   alternate();
   gerejeStop();
@@ -94,16 +94,17 @@ void setup()
     if(digitalRead(37))  afterDune();
     if(digitalRead(39))  test();
   }
-  turn(ARENA);
+//  turn(ARENA);
   getangle(4);
   Serial.println("RUN START");
   q=true;
   baseY = yaw;
+  gobi = true;
 }
 bool DUNE= false;
 void loop() 
 {
-  stepCount();
+//  stepCount();
 //  MPU();
   RUN(0);
   proxy();

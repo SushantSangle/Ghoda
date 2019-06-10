@@ -7,10 +7,10 @@ void left()
 }
 void right()
 {
-  Lm[0]=1.00f;
-  Lm[2]=1.00f;
-  Lm[1]=0.65f;
-  Lm[3]=0.65f;
+  Lm[0]=0.90f;
+  Lm[2]=0.90f;
+  Lm[1]=0.70f;
+  Lm[3]=0.70f;
 }
 void straight() 
 {
@@ -24,8 +24,9 @@ void straight()
 void leftEx()
 {
   staticG();
-  Lm[0]=-0.35f;
-  Lm[2]=-0.35f;
+  Lm[0]=-0.70f;
+  Lm[2]=-0.70f;
+  els[2][0] = 50;
   Lm[1]=1.0f;
   Lm[3]=1.0f;
   Hm[0]=1.0f;

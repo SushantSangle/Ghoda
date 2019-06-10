@@ -3,16 +3,18 @@ void proxy(){
   pf = digitalRead(fp);
   pr = digitalRead(rp);
   if(!(pf || pMode1) && gobi){
+    initial();
+    delay(100);
     staticG();
-    Hm[0]=1.0;
-    Hm[1]=1.0;
-    Hm[2]=1.7;
-    Hm[3]=1.7;
+    Hm[0]=0.6;
+    Hm[1]=0.6;
+    Hm[2]=1.5;
+    Hm[3]=1.5;
     if(!ARENA){
-      Lm[1]= 0.7;
-      Lm[2]= 1.0;
-      Lm[3]= 0.7;
-      Lm[0]= 1.0;
+      Lm[1]= 1.0;
+      Lm[2]= 0.7;
+      Lm[3]= 1.0;
+      Lm[0]= 0.7;
     }
     getangle(4);
     pMode1++;
@@ -43,7 +45,7 @@ void proxy(){
         
         Serial.println("3");
       }
-      else if(LEG==0 && els[0][1]==0)
+      else if(LEG==0 && els[0][1]==00)
       {
         els[0][1]= hval;
         Hm[0]=1.5f;
@@ -56,7 +58,7 @@ void proxy(){
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode>=16 && S==35 && pMode<500){
       alternate();
-      if(ARENA == 0)  right();
+      if(ARENA == 0)  left();
       startC=1;
       baseY = yaw;
       Step=300;
@@ -64,6 +66,22 @@ void proxy(){
       getangle(4);
       Serial.println("5");
     }
+//    if(LEG==0 && els[0][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
+//      els[0][1] = 0;
+//      Hm[0] = 1.0;
+//      Lm[0] = 1.2;
+//      getangle(0);
+//      pMode = 6;
+//      Serial.println("6");
+//    }
+//    else if(LEG==1 && els[1][1]==hval && (pMode>=6 ||(pr&&pf && pMode>4) ) ){
+//      els[1][1] = 0;
+//      Hm[1] = 1.0;
+//      Lm[1] = 1.2;
+//      getangle(1);
+//      pMode = 6;
+//      Serial.println("7");
+//    }
   }
   //Increasing height of leg after
   if(!(i%18)&& I_increment){
@@ -83,6 +101,14 @@ void proxy(){
       pMode = 6;
       Serial.println("7");
     }
+    if(pMode==6 && els[2][1] == 0 && els[3][1] == 0){
+      els[2][1] = -20;
+      els[3][1] = -20;
+      Hm[3] = 1.1;
+      Lm[3] = 1.0;
+      getangle(2);
+      getangle(3);
+    }
   }
 }
 void stepCount(){
@@ -90,7 +116,7 @@ void stepCount(){
   int idiff = diff*-1;
   int steps_after_step  = (ARENA?304:301);
   int steps_for_extreme = (ARENA?406:409);
-  int steps_before_step = (ARENA?13:13);
+  int steps_before_step = (ARENA?13:11);
   if(Step==steps_before_step)
   {
     Serial.println("9");
@@ -112,8 +138,8 @@ void stepCount(){
       Serial.println("11");
       alternate();
       S=15;
-      Lm[0] = 0.6;
-      Lm[2] = 0.6;
+      Lm[0] = 0.5;
+      Lm[2] = 0.5;
       Hm[0] = 1.7;
       Hm[1] = 1.7;
       Hm[2] = 1.7;

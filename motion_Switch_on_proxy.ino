@@ -1,21 +1,18 @@
-int hval=-90;
+int hval=-95;
 void proxy(){
   pf = digitalRead(fp);
   pr = digitalRead(rp);
   if(!(pf || pMode1) && gobi){
-    initial();
     staticG();
-    delay(100);
-    staticG();
-    Hm[0]=0.6;
-    Hm[1]=0.6;
+    Hm[0]=0.5;
+    Hm[1]=0.5;
     Hm[2]=1.5;
     Hm[3]=1.5;
     if(!ARENA){
       Lm[1]= 1.0;
-      Lm[2]= 0.7;
+      Lm[2]= 1.0;
       Lm[3]= 1.0;
-      Lm[0]= 0.7;
+      Lm[0]= 1.0;
     }
     getangle(4);
     pMode1++;
@@ -102,14 +99,14 @@ void proxy(){
       pMode = 6;
       Serial.println("7");
     }
-    if(pMode==6 && els[2][1] == 15 && els[3][1] == 0){
-      els[2][1] = -05;
-      els[3][1] = -20;
-      Hm[3] = 1.1;
-      Lm[3] = 1.0;
-      getangle(2);
-      getangle(3);
-    }
+//    if(pMode==6 && els[2][1] == 0 && els[3][1] == 0){
+//      els[2][1] = -05;
+//      els[3][1] = -20;
+//      Hm[3] = 1.1;
+//      Lm[3] = 1.0;
+//      getangle(2);
+//      getangle(3);
+//    }
   }
 }
 void stepCount(){

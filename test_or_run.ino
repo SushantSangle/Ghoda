@@ -157,7 +157,9 @@ void pausePlay(){
 void duneMode(){
   switch(Step)
   {
-    case 2003 ... 2004: dune();
+    case 2002 ... 2003:
+                  S = 25;
+                  dune();
                   getangle(4);
                   Step=2100;
                   break;

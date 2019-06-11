@@ -42,8 +42,8 @@ const uint16_t downS[4] = {48,46,41,42};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-5,0,4,9,-7,7,0,8}; 
-/*------------------------------------------------*/
+const uint16_t offset[8]={-6,0,-1,7,8,-8,0,-34}; 
+/*-----------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
 float Lm[4];
@@ -54,7 +54,7 @@ bool I_increment = false;
 /*------------------------------------------------*/
 
 /*------------POSITION_MANIPULATION---------------*/
-const int elb[2]={0,420};      //elbow co-ordinates
+const int elb[2]={0,410};      //elbow co-ordinates
 int els[4][2];
 bool mode=0;
 int LEG,LEGP; 
@@ -63,7 +63,7 @@ double xnow[4] = {0,0,0,0};
 /*------------------------------------------------*/
 
 /*---------------ANGLE_MANIPULATION---------------*/
-int rot=0,rot1=0,i=0;             //Rotation of axis
+int rot[4]={0,0,0,0},rot1=0,i=0;             //Rotation of axis
 float slope=0;
 int Angle[4][72][2];
 /*------------------------------------------------*/
@@ -95,29 +95,33 @@ void setup()
 //    if(digitalRead(39))  test();
 //  }
   while(digitalRead(fp)){
-        ARENA = digitalRead(36);
+    ARENA = digitalRead(36);
     Serial.println(ARENA);
     if(digitalRead(37))  afterDune();
+    if(digitalRead(38))  mountain();
     if(digitalRead(39))  test();
   }
   while(digitalRead(rp));
   delay(400);
 //  turn(ARENA);
-  getangle(4);
+//  getangle(4);
+  mountain();
   Serial.println("RUN START");
   q=true;
   baseY = yaw;
-  gobi = true;
+//  gobi = true;
 }
 bool DUNE= false;
 void loop() 
 {
 //  stepCount();
 //  MPU();
+//  stepCount();
   RUN(0);
+//  proxy();
+ duneMode();
 //  shift();
-  proxy();
-// duneMode();
+
 }
 
 /*----------------------POINTS_FOR_ALTERNATE----------------------*/

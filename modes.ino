@@ -9,8 +9,7 @@ void afterDune(){
 }
 void mountain(){
   Step = 2000;
-  S = 20;
-  pMode1 = 1000;
-  pMode= 1000;
+  pMode1 = 10000;
+  pMode= 10000;
   DUNE = true;
 }

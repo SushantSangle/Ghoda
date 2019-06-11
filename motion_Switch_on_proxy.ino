@@ -4,6 +4,7 @@ void proxy(){
   pr = digitalRead(rp);
   if(!(pf || pMode1) && gobi){
     initial();
+    staticG();
     delay(100);
     staticG();
     Hm[0]=0.6;
@@ -101,8 +102,8 @@ void proxy(){
       pMode = 6;
       Serial.println("7");
     }
-    if(pMode==6 && els[2][1] == 0 && els[3][1] == 0){
-      els[2][1] = -20;
+    if(pMode==6 && els[2][1] == 15 && els[3][1] == 0){
+      els[2][1] = -05;
       els[3][1] = -20;
       Hm[3] = 1.1;
       Lm[3] = 1.0;
@@ -115,8 +116,8 @@ void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
   int steps_after_step  = (ARENA?304:301);
-  int steps_for_extreme = (ARENA?406:409);
-  int steps_before_step = (ARENA?13:11);
+  int steps_for_extreme = (ARENA?406:405);
+  int steps_before_step = (ARENA?13:15);
   if(Step==steps_before_step)
   {
     Serial.println("9");

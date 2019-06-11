@@ -9,8 +9,8 @@ void right()
 {
   Lm[0]=0.90f;
   Lm[2]=0.90f;
-  Lm[1]=0.70f;
-  Lm[3]=0.70f;
+  Lm[1]=0.60f;
+  Lm[3]=0.60f;
 }
 void straight() 
 {

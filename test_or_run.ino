@@ -25,9 +25,9 @@ void shift(){
 //    if(roll  < -6   && els[3][1]< 0 && els[1][1]==0 ) stand();
 //-ve -> / and +ve -> \0
 //  if(roll  >  7   && els[3][1]==0 && els[0][1]==0 ) Raise();
-  if((i-9)%18==0)
+  if((i-9)%18==0 && mode==1)
   {
-    int Sh = 40;
+    int Sh = 20;
     switch(LEG){
       case 0: xnow[0]= Sh*-1;
               xnow[1]= Sh*-1;
@@ -67,10 +67,8 @@ void shift(){
     xpriv[1] = xnow[1];
     xpriv[2] = xnow[2];
     xpriv[3] = xnow[3];
-    delay(150);
+    delay(50);
   }
-  if(roll  >  6   && els[0][1]< 0 && els[3][1]==0 ) stand();
-  if(roll  < -6   && els[0][1]==0 && els[3][1]==0 ) bow();
 }
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/

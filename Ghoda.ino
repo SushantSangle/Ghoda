@@ -80,12 +80,13 @@ void setup()
   pinmode();
 
   staticG();
-//  test();
+
+  test();
 //  alternate();
   gerejeStop();
-  initial();
-  getangle(4);
-  initial();
+//  initial();
+//  getangle(4);
+//  initial();
   
 //  while(digitalRead(2))
 //  {

@@ -42,7 +42,6 @@ const uint16_t downS[4] = {48,46,41,42};
 /*------------------------------------------------*/
 
 /*-------------------OFFSET-----------------------*/
-const uint16_t offset[8]={-6,0,-1,7,8,-8,0,-34}; 
 /*-----------------------------------------------*/
 /*---------------------MULTIPLIERS----------------*/
 float Hm[4];
@@ -79,34 +78,33 @@ void setup()
 {
   pinmode();
 
-  staticG();
-
-  test();
-//  alternate();
-  gerejeStop();
-//  initial();
-//  getangle(4);
-//  initial();
+//  staticG();
+//  test();
+	alternate();
+	gerejeStop();
+	initial();
+	getangle(4);
+	initial();
   
-//  while(digitalRead(2))
-//  {
-//    ARENA = digitalRead(36);
-//    Serial.println(ARENA);
-//    if(digitalRead(37))  afterDune();
-//    if(digitalRead(39))  test();
-//  }
-  while(digitalRead(fp)){
+  while(digitalRead(RP))
+  {
     ARENA = digitalRead(36);
-    Serial.println(ARENA);
+    Serial.println(digitalRead(RP));
     if(digitalRead(37))  afterDune();
     if(digitalRead(38))  mountain();
     if(digitalRead(39))  test();
   }
-  while(digitalRead(rp));
-  delay(400);
-//  turn(ARENA);
-//  getangle(4);
-  mountain();
+  while(!digitalRead(RP)){
+    Serial.println(digitalRead(RP));
+  }
+//  while(digitalRead(fp)){
+//    
+//  }
+//  while(digitalRead(rp));
+  delay(200);
+  turn(ARENA);
+  getangle(4);
+//  mountain();
   Serial.println("RUN START");
   q=true;
   baseY = yaw;
@@ -118,9 +116,9 @@ void loop()
 //  stepCount();
 //  MPU();
 //  stepCount();
-  RUN(0);
+//  RUN(0);
 //  proxy();
- duneMode();
+//  duneMode();
 //  shift();
 
 }

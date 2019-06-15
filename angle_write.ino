@@ -12,8 +12,10 @@ void getangle(int leg){
     getangle(3);
   }
   else{
+    
     int Ex=elb[0]+els[leg][0];
     int Ey=elb[1]+els[leg][1];
+    float pre_slope = Y(1);
     for(int i=0;i<72;i++)
     {
       if(leg == 2 || leg == 3)  m=-1;
@@ -21,7 +23,7 @@ void getangle(int leg){
 
       double x=pt[i][0]*Lm[leg]*m;
       double y=pt[i][1]*Hm[leg];
-      if(y==0) y=Y(x);
+      y=pre_slope*x+y;
 
       float r = sqrt(s(Ex-x) + s(Ey-y));
 

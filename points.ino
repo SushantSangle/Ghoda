@@ -62,6 +62,7 @@ void staticG(){
   S=35;
 }
 void dune(){
+//  staticG();
   alternate();
   S=25;
   Hm[0]= 1.2;

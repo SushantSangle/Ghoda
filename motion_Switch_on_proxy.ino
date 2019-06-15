@@ -37,7 +37,7 @@ void proxy(){
       if(LEG==1 && els[1][1]==0)
       {
         els[1][1]= hval;
-        Hm[1]=1.5f;
+        Hm[1]=1.4f;
         Lm[1]=1.2f;
         getangle(1);
         
@@ -46,7 +46,7 @@ void proxy(){
       else if(LEG==0 && els[0][1]==00)
       {
         els[0][1]= hval;
-        Hm[0]=1.5f;
+        Hm[0]=1.4f;
         Lm[0]=1.2f;
         getangle(0);
         Serial.println("4");
@@ -56,7 +56,7 @@ void proxy(){
     //switch to alternate pMode
     else if(els[1][1]==0 && els[0][1]==0 && pMode>=16 && S==35 && pMode<500){
       alternate();
-      if(ARENA == 0)  left();
+//      if(ARENA == 0)  left();
       startC=1;
       baseY = yaw;
       Step=300;
@@ -125,6 +125,7 @@ void stepCount(){
   {
     Serial.println("10");
     initial();
+//    rev();
     turnX(ARENA);
     getangle(4);
     Step=400;

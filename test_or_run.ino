@@ -158,12 +158,11 @@ void duneMode(){
   switch(Step)
   {
     case 2002 ... 2003:
-                  S = 25;
                   dune();
                   getangle(4);
                   Step=2100;
                   break;
-    case 2124:    alternate();
+    case 2110:    alternate();
                   getangle(4);
                   Step=2200;
                   break;

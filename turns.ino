@@ -43,15 +43,12 @@ void leftEx()
 
 void rightEx()
 {
-  Lm[0]=1.0f;
-  Lm[2]=1.0f;
-  Lm[1]=-0.1f;
-  Lm[3]=-0.1f;
-  
-  pDiff[0] = 0;
-  pDiff[1] = 36;
-  pDiff[2] = 41;
-  pDiff[3] = 6;
+  alternate();
+  S=15;
+  Lm[1] = 0.1;
+  Lm[3] = 0.1;
+  Lm[0] = 0.8;
+  Lm[1] = 0.8;
 }
 void rev(){
   Lm[0] =-0.6;

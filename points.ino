@@ -4,7 +4,7 @@ void alternate(){
   double ptm = (double(l1)+double(l2))/490;
   for(int i=0 ;i<72;i++)
   {
-    for(int j=0;j<2;j++) pt[i][j] = (ptz[i][j]);
+    for(int j=0;j<2;j++) pt[i][j] = (pta[i][j]*ptm);
   }
   mode = 0;
   Hm[0]= 0.7f;

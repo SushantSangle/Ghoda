@@ -5,7 +5,7 @@
 #define stdinc
 //definations
 #define l1 240
-#define l2 205
+#define l2 210
 #define angle(val,sign,off) ((180+((sign)*(val))+offset[off])%180)
 #define pi 3.14159265
 #define toD(a) ((a)*pi/180)
@@ -14,7 +14,7 @@
 #define LEFTT 1
 #define RIGHTT 0
 
-const uint16_t offset[8]={-6,0,-1,7,8,-8,0,-36}; 
+const uint16_t offset[8]={-6,0,-1,3,8,-8,0,-36}; 
 
 const double pta[72][2] ={{0,0},{-4.3,0},{-8.6,0},{-12.9,0},{-21.5,0},{-25.8,0},
 {-30.1,0},{-34.4,0},{-38.7,0},{-43,0},{-47.3,0},{-51.6,0},{-55.9,0},

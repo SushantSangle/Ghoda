@@ -108,16 +108,17 @@ void setup()
   Serial.println("RUN START");
   q=true;
   baseY = yaw;
+  rightEx();
+  getangle(4);
 //  gobi = true;
 }
 bool DUNE= false;
 void loop() 
 {
-//  stepCount();
+  stepCount();
 //  MPU();
-//  stepCount();
-//  RUN(0);
-//  proxy();
+  RUN(0);
+  proxy();
 //  duneMode();
 //  shift();
 

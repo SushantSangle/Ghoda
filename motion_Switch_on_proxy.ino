@@ -136,9 +136,9 @@ void stepCount(){
     {
       Serial.println("11");
       alternate();
-      S=15;
-      Lm[0] = 0.5;
-      Lm[2] = 0.5;
+      S=20;
+      Lm[0] = 0.6;
+      Lm[2] = 0.6;
       Hm[0] = 1.7;
       Hm[1] = 1.7;
       Hm[2] = 1.7;

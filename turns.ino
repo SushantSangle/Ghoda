@@ -7,8 +7,8 @@ void left()
 }
 void right()
 {
-  Lm[0]=0.90f;
-  Lm[2]=0.90f;
+  Lm[0]=0.95f;
+  Lm[2]=0.95f;
   Lm[1]=0.60f;
   Lm[3]=0.60f;
 }

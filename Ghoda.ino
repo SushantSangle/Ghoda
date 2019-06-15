@@ -108,8 +108,6 @@ void setup()
   Serial.println("RUN START");
   q=true;
   baseY = yaw;
-  rightEx();
-  getangle(4);
 //  gobi = true;
 }
 bool DUNE= false;

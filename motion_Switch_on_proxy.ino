@@ -112,9 +112,9 @@ void proxy(){
 void stepCount(){
   int diff = baseY-yaw;
   int idiff = diff*-1;
-  int steps_after_step  = (ARENA?304:301);
-  int steps_for_extreme = (ARENA?406:405);
-  int steps_before_step = (ARENA?13:15);
+  int steps_after_step  = (ARENA?304:305);
+  int steps_for_extreme = (ARENA?406:402);
+  int steps_before_step = (ARENA?13:17);
   if(Step==steps_before_step)
   {
     Serial.println("9");
